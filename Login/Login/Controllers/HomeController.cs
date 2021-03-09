@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Login.Controllers
 {
+    //[Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -25,6 +26,12 @@ namespace Login.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [Authorize(Users = "lmonsalve22@gmail.com")]
+        public string Saludo()
+        {
+            return "Hola";
         }
     }
 }
