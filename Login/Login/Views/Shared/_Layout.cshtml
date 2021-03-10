@@ -13,33 +13,33 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*
-        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    *@
-                    <li>@Html.ActionLink("Categorias", "Index", "Categorias")</li>
-                    <li>@Html.ActionLink("Detalles", "Index", "Detalles")</li>
-                    <li>@Html.ActionLink("Fuentes", "Index", "Fuentes")</li>
-                    <li>@Html.ActionLink("Gráficos", "Index", "Graficoes")</li>
-                    <li>@Html.ActionLink("Industrias", "Index", "Industrias")</li>
-                    <li>@Html.ActionLink("Parametros", "Index", "Parametroes")</li>
-                    <li>@Html.ActionLink("Productos", "Index", "Productoes")</li>
-                    <li>@Html.ActionLink("Sector", "Index", "Sectors")</li>
-                    <li>@Html.ActionLink("Temporalidad", "Index", "Temporalidads")</li>
-                    <li>@Html.ActionLink("Territorio", "Index", "Territorios")</li>
-                    <li>@Html.ActionLink("Tipo de Gráfico", "Index", "Tipo_Grafico")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Aplicación
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <ul class="nav navbar-nav">
+                        @*
+            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                        *@
+                        <li>@Html.ActionLink("Categorias", "Index", "Categorias")</li>
+                        <li>@Html.ActionLink("Detalles", "Index", "Detalles")</li>
+                        <li>@Html.ActionLink("Fuentes", "Index", "Fuentes")</li>
+                        <li>@Html.ActionLink("Gráficos", "Index", "Graficoes")</li>
+                        <li>@Html.ActionLink("Industrias", "Index", "Industrias")</li>
+                        <li>@Html.ActionLink("Parametros", "Index", "Parametroes")</li>
+                        <li>@Html.ActionLink("Productos", "Index", "Productoes")</li>
+                        <li>@Html.ActionLink("Sector", "Index", "Sectors")</li>
+                        <li>@Html.ActionLink("Temporalidad", "Index", "Temporalidads")</li>
+                        <li>@Html.ActionLink("Territorio", "Index", "Territorios")</li>
+                        <li>@Html.ActionLink("Tipo de Gráfico", "Index", "Tipo_Grafico")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
     </div>
