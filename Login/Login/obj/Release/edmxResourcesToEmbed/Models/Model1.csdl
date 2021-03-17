@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="graficoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="graficosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="CATEGORIA">
     <Key>
       <PropertyRef Name="id" />
@@ -65,10 +65,12 @@
     <Property Name="tamanio_muestra" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="caracteristica_especial" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="auxiliar_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="RESPONSABLE_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CATEGORIA" Relationship="Self.GRAFICO_CATEGORIA_FK" FromRole="GRAFICO" ToRole="CATEGORIA" />
     <NavigationProperty Name="DETALLE" Relationship="Self.GRAFICO_DETALLE_FK" FromRole="GRAFICO" ToRole="DETALLE" />
     <NavigationProperty Name="FUENTE" Relationship="Self.GRAFICO_FUENTE_FK" FromRole="GRAFICO" ToRole="FUENTE" />
     <NavigationProperty Name="PARAMETRO" Relationship="Self.GRAFICO_PARAMETRO_FK" FromRole="GRAFICO" ToRole="PARAMETRO" />
+    <NavigationProperty Name="RESPONSABLE1" Relationship="Self.GRAFICO_RESPONSABLE_FK" FromRole="GRAFICO" ToRole="RESPONSABLE" />
     <NavigationProperty Name="TEMPORALIDAD" Relationship="Self.GRAFICO_TEMPORALIDAD_FK" FromRole="GRAFICO" ToRole="TEMPORALIDAD" />
     <NavigationProperty Name="TERRITORIO" Relationship="Self.GRAFICO_TERRITORIO_FK" FromRole="GRAFICO" ToRole="TERRITORIO" />
     <NavigationProperty Name="TIPO_GRAFICO" Relationship="Self.GRAFICO_TIPO_GRAFICO_FK" FromRole="GRAFICO" ToRole="TIPO_GRAFICO" />
@@ -105,6 +107,16 @@
     <NavigationProperty Name="CATEGORIA" Relationship="Self.CATEGORIA_PRODUCTO_FK" FromRole="PRODUCTO" ToRole="CATEGORIA" />
     <NavigationProperty Name="SECTOR" Relationship="Self.PRODUCTO_SECTOR_FK" FromRole="PRODUCTO" ToRole="SECTOR" />
   </EntityType>
+  <EntityType Name="RESPONSABLE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="auxiliar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="GRAFICO" Relationship="Self.GRAFICO_RESPONSABLE_FK" FromRole="RESPONSABLE" ToRole="GRAFICO" />
+  </EntityType>
   <EntityType Name="SECTOR">
     <Key>
       <PropertyRef Name="id" />
@@ -137,6 +149,8 @@
     <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="auxiliar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="iso_pais" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="nivel_administrativo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="GRAFICO" Relationship="Self.GRAFICO_TERRITORIO_FK" FromRole="TERRITORIO" ToRole="GRAFICO" />
   </EntityType>
   <EntityType Name="TIPO_GRAFICO">
@@ -209,6 +223,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="GRAFICO_RESPONSABLE_FK">
+    <End Role="RESPONSABLE" Type="Self.RESPONSABLE" Multiplicity="1" />
+    <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESPONSABLE">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GRAFICO">
+        <PropertyRef Name="RESPONSABLE_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="GRAFICO_TEMPORALIDAD_FK">
     <End Role="TEMPORALIDAD" Type="Self.TEMPORALIDAD" Multiplicity="1" />
     <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="*" />
@@ -269,7 +295,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="graficoEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="graficosEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" />
     <EntitySet Name="DETALLE" EntityType="Self.DETALLE" />
     <EntitySet Name="FUENTE" EntityType="Self.FUENTE" />
@@ -277,6 +303,7 @@
     <EntitySet Name="INDUSTRIA" EntityType="Self.INDUSTRIA" />
     <EntitySet Name="PARAMETRO" EntityType="Self.PARAMETRO" />
     <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+    <EntitySet Name="RESPONSABLE" EntityType="Self.RESPONSABLE" />
     <EntitySet Name="SECTOR" EntityType="Self.SECTOR" />
     <EntitySet Name="TEMPORALIDAD" EntityType="Self.TEMPORALIDAD" />
     <EntitySet Name="TERRITORIO" EntityType="Self.TERRITORIO" />
@@ -299,6 +326,10 @@
     </AssociationSet>
     <AssociationSet Name="GRAFICO_PARAMETRO_FK" Association="Self.GRAFICO_PARAMETRO_FK">
       <End Role="PARAMETRO" EntitySet="PARAMETRO" />
+      <End Role="GRAFICO" EntitySet="GRAFICO" />
+    </AssociationSet>
+    <AssociationSet Name="GRAFICO_RESPONSABLE_FK" Association="Self.GRAFICO_RESPONSABLE_FK">
+      <End Role="RESPONSABLE" EntitySet="RESPONSABLE" />
       <End Role="GRAFICO" EntitySet="GRAFICO" />
     </AssociationSet>
     <AssociationSet Name="GRAFICO_TEMPORALIDAD_FK" Association="Self.GRAFICO_TEMPORALIDAD_FK">

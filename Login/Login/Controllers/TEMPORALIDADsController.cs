@@ -12,7 +12,7 @@ namespace Login.Controllers
 {
     public class TEMPORALIDADsController : Controller
     {
-        private graficoEntities db = new graficoEntities();
+        private graficosEntities db = new graficosEntities();
 
         // GET: TEMPORALIDADs
         public ActionResult Index()

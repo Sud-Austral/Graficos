@@ -20,6 +20,12 @@
         <th>
             @Html.DisplayNameFor(model => model.auxiliar)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iso_pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nivel_administrativo)
+        </th>
         <th></th>
     </tr>
 
@@ -33,6 +39,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.auxiliar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iso_pais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nivel_administrativo)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

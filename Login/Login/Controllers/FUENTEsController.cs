@@ -12,7 +12,7 @@ namespace Login.Controllers
 {
     public class FUENTEsController : Controller
     {
-        private graficoEntities db = new graficoEntities();
+        private graficosEntities db = new graficosEntities();
 
         // GET: FUENTEs
         public ActionResult Index()
@@ -50,7 +50,7 @@ namespace Login.Controllers
         {
             if (ModelState.IsValid)
             {
-                fUENTE.id = db.FUENTE.Max(x => x.id) +1;
+                fUENTE.id = db.FUENTE.Max(x => x.id) + 1;
                 db.FUENTE.Add(fUENTE);
                 db.SaveChanges();
                 return RedirectToAction("Index");

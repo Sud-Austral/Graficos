@@ -12,7 +12,7 @@ namespace Login.Controllers
 {
     public class SECTORsController : Controller
     {
-        private graficoEntities db = new graficoEntities();
+        private graficosEntities db = new graficosEntities();
 
         // GET: SECTORs
         public ActionResult Index()
@@ -52,7 +52,7 @@ namespace Login.Controllers
         {
             if (ModelState.IsValid)
             {
-                sECTOR.id = db.SECTOR.Max(x => x.id) +  1;
+                sECTOR.id = db.SECTOR.Max(x => x.id) + 1;
                 db.SECTOR.Add(sECTOR);
                 db.SaveChanges();
                 return RedirectToAction("Index");

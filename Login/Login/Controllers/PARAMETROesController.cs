@@ -12,7 +12,7 @@ namespace Login.Controllers
 {
     public class PARAMETROesController : Controller
     {
-        private graficoEntities db = new graficoEntities();
+        private graficosEntities db = new graficosEntities();
 
         // GET: PARAMETROes
         public ActionResult Index()

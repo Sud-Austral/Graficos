@@ -12,7 +12,7 @@ namespace Login.Controllers
 {
     public class TIPO_GRAFICOController : Controller
     {
-        private graficoEntities db = new graficoEntities();
+        private graficosEntities db = new graficosEntities();
 
         // GET: TIPO_GRAFICO
         public ActionResult Index()

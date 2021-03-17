@@ -13,10 +13,10 @@ namespace Login.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class graficoEntities : DbContext
+    public partial class graficosEntities : DbContext
     {
-        public graficoEntities()
-            : base("name=graficoEntities")
+        public graficosEntities()
+            : base("name=graficosEntities")
         {
         }
     
@@ -32,6 +32,7 @@ namespace Login.Models
         public virtual DbSet<INDUSTRIA> INDUSTRIA { get; set; }
         public virtual DbSet<PARAMETRO> PARAMETRO { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
+        public virtual DbSet<RESPONSABLE> RESPONSABLE { get; set; }
         public virtual DbSet<SECTOR> SECTOR { get; set; }
         public virtual DbSet<TEMPORALIDAD> TEMPORALIDAD { get; set; }
         public virtual DbSet<TERRITORIO> TERRITORIO { get; set; }

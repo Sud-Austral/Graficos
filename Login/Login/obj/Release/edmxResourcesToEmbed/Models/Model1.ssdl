@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="graficoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="graficosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="CATEGORIA">
     <Key>
       <PropertyRef Name="id" />
@@ -61,6 +61,7 @@
     <Property Name="tamanio_muestra" Type="varchar" MaxLength="250" />
     <Property Name="caracteristica_especial" Type="varchar" MaxLength="250" />
     <Property Name="auxiliar_1" Type="varchar" MaxLength="250" />
+    <Property Name="RESPONSABLE_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="INDUSTRIA">
     <Key>
@@ -89,6 +90,15 @@
     <Property Name="descripcion" Type="varchar" MaxLength="250" />
     <Property Name="auxiliar" Type="varchar" MaxLength="250" />
     <Property Name="SECTOR_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RESPONSABLE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="250" />
+    <Property Name="descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="auxiliar" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="SECTOR">
     <Key>
@@ -119,6 +129,8 @@
     <Property Name="nombre" Type="varchar" MaxLength="250" />
     <Property Name="descripcion" Type="varchar" MaxLength="250" />
     <Property Name="auxiliar" Type="varchar" MaxLength="250" />
+    <Property Name="iso_pais" Type="varchar" MaxLength="250" />
+    <Property Name="nivel_administrativo" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="TIPO_GRAFICO">
     <Key>
@@ -189,6 +201,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="GRAFICO_RESPONSABLE_FK">
+    <End Role="RESPONSABLE" Type="Self.RESPONSABLE" Multiplicity="1" />
+    <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESPONSABLE">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GRAFICO">
+        <PropertyRef Name="RESPONSABLE_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="GRAFICO_TEMPORALIDAD_FK">
     <End Role="TEMPORALIDAD" Type="Self.TEMPORALIDAD" Multiplicity="1" />
     <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="*" />
@@ -249,7 +273,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="graficoModelStoreContainer">
+  <EntityContainer Name="graficosModelStoreContainer">
     <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DETALLE" EntityType="Self.DETALLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FUENTE" EntityType="Self.FUENTE" Schema="dbo" store:Type="Tables" />
@@ -257,6 +281,7 @@
     <EntitySet Name="INDUSTRIA" EntityType="Self.INDUSTRIA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PARAMETRO" EntityType="Self.PARAMETRO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RESPONSABLE" EntityType="Self.RESPONSABLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SECTOR" EntityType="Self.SECTOR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TEMPORALIDAD" EntityType="Self.TEMPORALIDAD" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TERRITORIO" EntityType="Self.TERRITORIO" Schema="dbo" store:Type="Tables" />
@@ -279,6 +304,10 @@
     </AssociationSet>
     <AssociationSet Name="GRAFICO_PARAMETRO_FK" Association="Self.GRAFICO_PARAMETRO_FK">
       <End Role="PARAMETRO" EntitySet="PARAMETRO" />
+      <End Role="GRAFICO" EntitySet="GRAFICO" />
+    </AssociationSet>
+    <AssociationSet Name="GRAFICO_RESPONSABLE_FK" Association="Self.GRAFICO_RESPONSABLE_FK">
+      <End Role="RESPONSABLE" EntitySet="RESPONSABLE" />
       <End Role="GRAFICO" EntitySet="GRAFICO" />
     </AssociationSet>
     <AssociationSet Name="GRAFICO_TEMPORALIDAD_FK" Association="Self.GRAFICO_TEMPORALIDAD_FK">

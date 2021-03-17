@@ -18,10 +18,10 @@
             @Html.DisplayNameFor(model => model.descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.auxiliar)
+            Número y Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PRODUCTO.nombre)
+            Producto Asociado
         </th>
         <th></th>
     </tr>
@@ -35,7 +35,11 @@
             @Html.DisplayFor(modelItem => item.descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.auxiliar)
+            @{
+                string salida = item.PRODUCTO.SECTOR.INDUSTRIA_id.ToString("D3") + item.PRODUCTO.SECTOR_id.ToString("D3") + 
+                    item.PRODUCTO_id.ToString("D4") + item.id.ToString("D5") + item.nombre;
+            }
+            @salida
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PRODUCTO.nombre)

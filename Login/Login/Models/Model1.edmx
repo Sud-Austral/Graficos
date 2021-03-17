@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="graficoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="graficosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORIA">
           <Key>
             <PropertyRef Name="id" />
@@ -66,6 +66,7 @@
           <Property Name="tamanio_muestra" Type="varchar" MaxLength="250" />
           <Property Name="caracteristica_especial" Type="varchar" MaxLength="250" />
           <Property Name="auxiliar_1" Type="varchar" MaxLength="250" />
+          <Property Name="RESPONSABLE_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="INDUSTRIA">
           <Key>
@@ -94,6 +95,15 @@
           <Property Name="descripcion" Type="varchar" MaxLength="250" />
           <Property Name="auxiliar" Type="varchar" MaxLength="250" />
           <Property Name="SECTOR_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RESPONSABLE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="250" />
+          <Property Name="descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="auxiliar" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="SECTOR">
           <Key>
@@ -124,6 +134,8 @@
           <Property Name="nombre" Type="varchar" MaxLength="250" />
           <Property Name="descripcion" Type="varchar" MaxLength="250" />
           <Property Name="auxiliar" Type="varchar" MaxLength="250" />
+          <Property Name="iso_pais" Type="varchar" MaxLength="250" />
+          <Property Name="nivel_administrativo" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="TIPO_GRAFICO">
           <Key>
@@ -194,6 +206,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="GRAFICO_RESPONSABLE_FK">
+          <End Role="RESPONSABLE" Type="Self.RESPONSABLE" Multiplicity="1" />
+          <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESPONSABLE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GRAFICO">
+              <PropertyRef Name="RESPONSABLE_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="GRAFICO_TEMPORALIDAD_FK">
           <End Role="TEMPORALIDAD" Type="Self.TEMPORALIDAD" Multiplicity="1" />
           <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="*" />
@@ -254,7 +278,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="graficoModelStoreContainer">
+        <EntityContainer Name="graficosModelStoreContainer">
           <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETALLE" EntityType="Self.DETALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FUENTE" EntityType="Self.FUENTE" Schema="dbo" store:Type="Tables" />
@@ -262,6 +286,7 @@
           <EntitySet Name="INDUSTRIA" EntityType="Self.INDUSTRIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PARAMETRO" EntityType="Self.PARAMETRO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESPONSABLE" EntityType="Self.RESPONSABLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SECTOR" EntityType="Self.SECTOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEMPORALIDAD" EntityType="Self.TEMPORALIDAD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TERRITORIO" EntityType="Self.TERRITORIO" Schema="dbo" store:Type="Tables" />
@@ -284,6 +309,10 @@
           </AssociationSet>
           <AssociationSet Name="GRAFICO_PARAMETRO_FK" Association="Self.GRAFICO_PARAMETRO_FK">
             <End Role="PARAMETRO" EntitySet="PARAMETRO" />
+            <End Role="GRAFICO" EntitySet="GRAFICO" />
+          </AssociationSet>
+          <AssociationSet Name="GRAFICO_RESPONSABLE_FK" Association="Self.GRAFICO_RESPONSABLE_FK">
+            <End Role="RESPONSABLE" EntitySet="RESPONSABLE" />
             <End Role="GRAFICO" EntitySet="GRAFICO" />
           </AssociationSet>
           <AssociationSet Name="GRAFICO_TEMPORALIDAD_FK" Association="Self.GRAFICO_TEMPORALIDAD_FK">
@@ -311,7 +340,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="graficoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="graficosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CATEGORIA">
           <Key>
             <PropertyRef Name="id" />
@@ -377,10 +406,12 @@
           <Property Name="tamanio_muestra" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="caracteristica_especial" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="auxiliar_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="RESPONSABLE_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CATEGORIA" Relationship="Self.GRAFICO_CATEGORIA_FK" FromRole="GRAFICO" ToRole="CATEGORIA" />
           <NavigationProperty Name="DETALLE" Relationship="Self.GRAFICO_DETALLE_FK" FromRole="GRAFICO" ToRole="DETALLE" />
           <NavigationProperty Name="FUENTE" Relationship="Self.GRAFICO_FUENTE_FK" FromRole="GRAFICO" ToRole="FUENTE" />
           <NavigationProperty Name="PARAMETRO" Relationship="Self.GRAFICO_PARAMETRO_FK" FromRole="GRAFICO" ToRole="PARAMETRO" />
+          <NavigationProperty Name="RESPONSABLE1" Relationship="Self.GRAFICO_RESPONSABLE_FK" FromRole="GRAFICO" ToRole="RESPONSABLE" />
           <NavigationProperty Name="TEMPORALIDAD" Relationship="Self.GRAFICO_TEMPORALIDAD_FK" FromRole="GRAFICO" ToRole="TEMPORALIDAD" />
           <NavigationProperty Name="TERRITORIO" Relationship="Self.GRAFICO_TERRITORIO_FK" FromRole="GRAFICO" ToRole="TERRITORIO" />
           <NavigationProperty Name="TIPO_GRAFICO" Relationship="Self.GRAFICO_TIPO_GRAFICO_FK" FromRole="GRAFICO" ToRole="TIPO_GRAFICO" />
@@ -417,6 +448,16 @@
           <NavigationProperty Name="CATEGORIA" Relationship="Self.CATEGORIA_PRODUCTO_FK" FromRole="PRODUCTO" ToRole="CATEGORIA" />
           <NavigationProperty Name="SECTOR" Relationship="Self.PRODUCTO_SECTOR_FK" FromRole="PRODUCTO" ToRole="SECTOR" />
         </EntityType>
+        <EntityType Name="RESPONSABLE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="auxiliar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRAFICO" Relationship="Self.GRAFICO_RESPONSABLE_FK" FromRole="RESPONSABLE" ToRole="GRAFICO" />
+        </EntityType>
         <EntityType Name="SECTOR">
           <Key>
             <PropertyRef Name="id" />
@@ -449,6 +490,8 @@
           <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="auxiliar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="iso_pais" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="nivel_administrativo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="GRAFICO" Relationship="Self.GRAFICO_TERRITORIO_FK" FromRole="TERRITORIO" ToRole="GRAFICO" />
         </EntityType>
         <EntityType Name="TIPO_GRAFICO">
@@ -521,6 +564,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="GRAFICO_RESPONSABLE_FK">
+          <End Role="RESPONSABLE" Type="Self.RESPONSABLE" Multiplicity="1" />
+          <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESPONSABLE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GRAFICO">
+              <PropertyRef Name="RESPONSABLE_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="GRAFICO_TEMPORALIDAD_FK">
           <End Role="TEMPORALIDAD" Type="Self.TEMPORALIDAD" Multiplicity="1" />
           <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="*" />
@@ -581,7 +636,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="graficoEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="graficosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" />
           <EntitySet Name="DETALLE" EntityType="Self.DETALLE" />
           <EntitySet Name="FUENTE" EntityType="Self.FUENTE" />
@@ -589,6 +644,7 @@
           <EntitySet Name="INDUSTRIA" EntityType="Self.INDUSTRIA" />
           <EntitySet Name="PARAMETRO" EntityType="Self.PARAMETRO" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="RESPONSABLE" EntityType="Self.RESPONSABLE" />
           <EntitySet Name="SECTOR" EntityType="Self.SECTOR" />
           <EntitySet Name="TEMPORALIDAD" EntityType="Self.TEMPORALIDAD" />
           <EntitySet Name="TERRITORIO" EntityType="Self.TERRITORIO" />
@@ -611,6 +667,10 @@
           </AssociationSet>
           <AssociationSet Name="GRAFICO_PARAMETRO_FK" Association="Self.GRAFICO_PARAMETRO_FK">
             <End Role="PARAMETRO" EntitySet="PARAMETRO" />
+            <End Role="GRAFICO" EntitySet="GRAFICO" />
+          </AssociationSet>
+          <AssociationSet Name="GRAFICO_RESPONSABLE_FK" Association="Self.GRAFICO_RESPONSABLE_FK">
+            <End Role="RESPONSABLE" EntitySet="RESPONSABLE" />
             <End Role="GRAFICO" EntitySet="GRAFICO" />
           </AssociationSet>
           <AssociationSet Name="GRAFICO_TEMPORALIDAD_FK" Association="Self.GRAFICO_TEMPORALIDAD_FK">
@@ -639,9 +699,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="graficoModelStoreContainer" CdmEntityContainer="graficoEntities">
+        <EntityContainerMapping StorageEntityContainer="graficosModelStoreContainer" CdmEntityContainer="graficosEntities">
           <EntitySetMapping Name="CATEGORIA">
-            <EntityTypeMapping TypeName="graficoModel.CATEGORIA">
+            <EntityTypeMapping TypeName="graficosModel.CATEGORIA">
               <MappingFragment StoreEntitySet="CATEGORIA">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -652,7 +712,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DETALLE">
-            <EntityTypeMapping TypeName="graficoModel.DETALLE">
+            <EntityTypeMapping TypeName="graficosModel.DETALLE">
               <MappingFragment StoreEntitySet="DETALLE">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -662,7 +722,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FUENTE">
-            <EntityTypeMapping TypeName="graficoModel.FUENTE">
+            <EntityTypeMapping TypeName="graficosModel.FUENTE">
               <MappingFragment StoreEntitySet="FUENTE">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -674,7 +734,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GRAFICO">
-            <EntityTypeMapping TypeName="graficoModel.GRAFICO">
+            <EntityTypeMapping TypeName="graficosModel.GRAFICO">
               <MappingFragment StoreEntitySet="GRAFICO">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -703,11 +763,12 @@
                 <ScalarProperty Name="tamanio_muestra" ColumnName="tamanio_muestra" />
                 <ScalarProperty Name="caracteristica_especial" ColumnName="caracteristica_especial" />
                 <ScalarProperty Name="auxiliar_1" ColumnName="auxiliar_1" />
+                <ScalarProperty Name="RESPONSABLE_id" ColumnName="RESPONSABLE_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="INDUSTRIA">
-            <EntityTypeMapping TypeName="graficoModel.INDUSTRIA">
+            <EntityTypeMapping TypeName="graficosModel.INDUSTRIA">
               <MappingFragment StoreEntitySet="INDUSTRIA">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -717,7 +778,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PARAMETRO">
-            <EntityTypeMapping TypeName="graficoModel.PARAMETRO">
+            <EntityTypeMapping TypeName="graficosModel.PARAMETRO">
               <MappingFragment StoreEntitySet="PARAMETRO">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -727,7 +788,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PRODUCTO">
-            <EntityTypeMapping TypeName="graficoModel.PRODUCTO">
+            <EntityTypeMapping TypeName="graficosModel.PRODUCTO">
               <MappingFragment StoreEntitySet="PRODUCTO">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -737,8 +798,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="RESPONSABLE">
+            <EntityTypeMapping TypeName="graficosModel.RESPONSABLE">
+              <MappingFragment StoreEntitySet="RESPONSABLE">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SECTOR">
-            <EntityTypeMapping TypeName="graficoModel.SECTOR">
+            <EntityTypeMapping TypeName="graficosModel.SECTOR">
               <MappingFragment StoreEntitySet="SECTOR">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -749,7 +820,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TEMPORALIDAD">
-            <EntityTypeMapping TypeName="graficoModel.TEMPORALIDAD">
+            <EntityTypeMapping TypeName="graficosModel.TEMPORALIDAD">
               <MappingFragment StoreEntitySet="TEMPORALIDAD">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -761,17 +832,19 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TERRITORIO">
-            <EntityTypeMapping TypeName="graficoModel.TERRITORIO">
+            <EntityTypeMapping TypeName="graficosModel.TERRITORIO">
               <MappingFragment StoreEntitySet="TERRITORIO">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+                <ScalarProperty Name="iso_pais" ColumnName="iso_pais" />
+                <ScalarProperty Name="nivel_administrativo" ColumnName="nivel_administrativo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_GRAFICO">
-            <EntityTypeMapping TypeName="graficoModel.TIPO_GRAFICO">
+            <EntityTypeMapping TypeName="graficosModel.TIPO_GRAFICO">
               <MappingFragment StoreEntitySet="TIPO_GRAFICO">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />

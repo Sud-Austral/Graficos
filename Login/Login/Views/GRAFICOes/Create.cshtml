@@ -25,6 +25,62 @@
         </div>
     *@
     <div class="form-group">
+        @Html.LabelFor(model => model.CATEGORIA_id, "CATEGORIA_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CATEGORIA_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CATEGORIA_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PARAMETRO_id, "PARAMETRO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PARAMETRO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PARAMETRO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DETALLE_id, "DETALLE_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("DETALLE_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DETALLE_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TERRITORIO_id, "TERRITORIO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TERRITORIO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TERRITORIO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TEMPORALIDAD_id, "TEMPORALIDAD_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TEMPORALIDAD_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TEMPORALIDAD_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TIPO_GRAFICO_id, "TIPO_GRAFICO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TIPO_GRAFICO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TIPO_GRAFICO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FUENTE_id, "FUENTE_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("FUENTE_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FUENTE_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
@@ -144,61 +200,7 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.CATEGORIA_id, "CATEGORIA_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("CATEGORIA_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CATEGORIA_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PARAMETRO_id, "PARAMETRO_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("PARAMETRO_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PARAMETRO_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DETALLE_id, "DETALLE_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("DETALLE_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.DETALLE_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TERRITORIO_id, "TERRITORIO_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TERRITORIO_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TERRITORIO_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TEMPORALIDAD_id, "TEMPORALIDAD_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TEMPORALIDAD_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TEMPORALIDAD_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TIPO_GRAFICO_id, "TIPO_GRAFICO_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TIPO_GRAFICO_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TIPO_GRAFICO_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.FUENTE_id, "FUENTE_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("FUENTE_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.FUENTE_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.unidad_medida, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -233,6 +235,14 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.RESPONSABLE_id, "RESPONSABLE_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("RESPONSABLE_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.RESPONSABLE_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
@@ -247,3 +257,24 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+    function asignarNombre() {
+        //alert(document.getElementById("CATEGORIA_id").find("option:selected").text());
+        var categoria = $("#CATEGORIA_id").find("option:selected").text().toLowerCase();
+        var parametro = $("#PARAMETRO_id").find("option:selected").text().toLowerCase();
+        var detalle = $("#DETALLE_id").find("option:selected").text().toLowerCase();
+        var territorio = $("#TERRITORIO_id").find("option:selected").text().toLowerCase();
+        var temporalidad = $("#TEMPORALIDAD_id").find("option:selected").text().toLowerCase();
+        var fuente = $("#fuente_id").find("option:selected").text().toLowerCase();
+        var nombre_Compelto = parametro + "_" + categoria + "_" +  detalle + "_" + territorio + "_" + temporalidad ; //+ "_" + tipo_grafico + "_" + fuente
+        document.getElementById("nombre").value = nombre_Compelto.replace(" ","_");
+            //alert($("#CATEGORIA_id").find("option:selected").text());
+    }
+
+    document.getElementById("CATEGORIA_id").addEventListener("change", asignarNombre);
+    document.getElementById("PARAMETRO_id").addEventListener("change", asignarNombre);
+    document.getElementById("DETALLE_id").addEventListener("change", asignarNombre);
+    document.getElementById("TERRITORIO_id").addEventListener("change", asignarNombre);
+    document.getElementById("TEMPORALIDAD_id").addEventListener("change", asignarNombre);
+</script>

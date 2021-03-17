@@ -41,11 +41,13 @@ namespace Login.Models
         public string tamanio_muestra { get; set; }
         public string caracteristica_especial { get; set; }
         public string auxiliar_1 { get; set; }
+        public int RESPONSABLE_id { get; set; }
     
         public virtual CATEGORIA CATEGORIA { get; set; }
         public virtual DETALLE DETALLE { get; set; }
         public virtual FUENTE FUENTE { get; set; }
         public virtual PARAMETRO PARAMETRO { get; set; }
+        public virtual RESPONSABLE RESPONSABLE1 { get; set; }
         public virtual TEMPORALIDAD TEMPORALIDAD { get; set; }
         public virtual TERRITORIO TERRITORIO { get; set; }
         public virtual TIPO_GRAFICO TIPO_GRAFICO { get; set; }

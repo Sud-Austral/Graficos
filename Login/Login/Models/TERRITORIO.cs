@@ -24,6 +24,8 @@ namespace Login.Models
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public string auxiliar { get; set; }
+        public string iso_pais { get; set; }
+        public string nivel_administrativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GRAFICO> GRAFICO { get; set; }

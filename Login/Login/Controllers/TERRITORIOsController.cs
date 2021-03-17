@@ -12,7 +12,7 @@ namespace Login.Controllers
 {
     public class TERRITORIOsController : Controller
     {
-        private graficoEntities db = new graficoEntities();
+        private graficosEntities db = new graficosEntities();
 
         // GET: TERRITORIOs
         public ActionResult Index()
@@ -46,11 +46,11 @@ namespace Login.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nombre,descripcion,auxiliar")] TERRITORIO tERRITORIO)
+        public ActionResult Create([Bind(Include = "id,nombre,descripcion,auxiliar,iso_pais,nivel_administrativo")] TERRITORIO tERRITORIO)
         {
             if (ModelState.IsValid)
             {
-                tERRITORIO.id = db.TERRITORIO.Max(x => x.id) + 1;
+                tERRITORIO.id = db.TEMPORALIDAD.Max(x => x.id) + 1;
                 db.TERRITORIO.Add(tERRITORIO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,7 +79,7 @@ namespace Login.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nombre,descripcion,auxiliar")] TERRITORIO tERRITORIO)
+        public ActionResult Edit([Bind(Include = "id,nombre,descripcion,auxiliar,iso_pais,nivel_administrativo")] TERRITORIO tERRITORIO)
         {
             if (ModelState.IsValid)
             {

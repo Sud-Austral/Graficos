@@ -12,7 +12,7 @@ namespace Login.Controllers
 {
     public class INDUSTRIAsController : Controller
     {
-        private graficoEntities db = new graficoEntities();
+        private graficosEntities db = new graficosEntities();
 
         // GET: INDUSTRIAs
         public ActionResult Index()
@@ -51,6 +51,7 @@ namespace Login.Controllers
             if (ModelState.IsValid)
             {
                 iNDUSTRIA.id = db.INDUSTRIA.Max(x => x.id) + 1;
+                //iNDUSTRIA.auxiliar = Util.NumeroATexto(iNDUSTRIA.id) + iNDUSTRIA.nombre;
                 db.INDUSTRIA.Add(iNDUSTRIA);
                 db.SaveChanges();
                 return RedirectToAction("Index");

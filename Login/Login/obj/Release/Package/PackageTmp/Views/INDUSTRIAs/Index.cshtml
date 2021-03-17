@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Login.Models.INDUSTRIA>
+@using Login.Models;
 
 @{
     ViewBag.Title = "Index";
@@ -18,7 +19,10 @@
             @Html.DisplayNameFor(model => model.descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.auxiliar)
+            @*
+        @Html.DisplayNameFor(model => model.auxiliar)
+            *@
+            Número y Nombre
         </th>
         <th></th>
     </tr>
@@ -32,7 +36,14 @@
             @Html.DisplayFor(modelItem => item.descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.auxiliar)
+            @{
+                string salida = item.id.ToString("D3") + item.nombre;
+             }
+            @salida
+            
+            @*
+        @Html.DisplayFor(modelItem => Util.NumeroNombreIndustria(item))
+            *@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
