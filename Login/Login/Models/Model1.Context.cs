@@ -37,5 +37,6 @@ namespace Login.Models
         public virtual DbSet<TEMPORALIDAD> TEMPORALIDAD { get; set; }
         public virtual DbSet<TERRITORIO> TERRITORIO { get; set; }
         public virtual DbSet<TIPO_GRAFICO> TIPO_GRAFICO { get; set; }
+        public virtual DbSet<ARCHIVO_CSV> ARCHIVO_CSV { get; set; }
     }
 }

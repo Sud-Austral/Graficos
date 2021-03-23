@@ -154,5 +154,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ARCHIVO_CSV">
+      <EntityTypeMapping TypeName="graficosModel.ARCHIVO_CSV">
+        <MappingFragment StoreEntitySet="ARCHIVO_CSV">
+          <ScalarProperty Name="GRAFICO_id" ColumnName="GRAFICO_id" />
+          <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

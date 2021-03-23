@@ -74,6 +74,7 @@
     <NavigationProperty Name="TEMPORALIDAD" Relationship="Self.GRAFICO_TEMPORALIDAD_FK" FromRole="GRAFICO" ToRole="TEMPORALIDAD" />
     <NavigationProperty Name="TERRITORIO" Relationship="Self.GRAFICO_TERRITORIO_FK" FromRole="GRAFICO" ToRole="TERRITORIO" />
     <NavigationProperty Name="TIPO_GRAFICO" Relationship="Self.GRAFICO_TIPO_GRAFICO_FK" FromRole="GRAFICO" ToRole="TIPO_GRAFICO" />
+    <NavigationProperty Name="ARCHIVO_CSV" Relationship="graficosModel.ARCHIVO_CSV_GRAFICO_FK" FromRole="GRAFICO" ToRole="ARCHIVO_CSV" />
   </EntityType>
   <EntityType Name="INDUSTRIA">
     <Key>
@@ -352,5 +353,33 @@
       <End Role="SECTOR" EntitySet="SECTOR" />
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
     </AssociationSet>
+    <EntitySet Name="ARCHIVO_CSV" EntityType="graficosModel.ARCHIVO_CSV" />
+    <AssociationSet Name="ARCHIVO_CSV_GRAFICO_FK" Association="graficosModel.ARCHIVO_CSV_GRAFICO_FK">
+      <End Role="GRAFICO" EntitySet="GRAFICO" />
+      <End Role="ARCHIVO_CSV" EntitySet="ARCHIVO_CSV" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="ARCHIVO_CSV">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="data" Type="Binary" MaxLength="1" FixedLength="false" />
+    <Property Name="auxiliar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="GRAFICO_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="GRAFICO" Relationship="graficosModel.ARCHIVO_CSV_GRAFICO_FK" FromRole="ARCHIVO_CSV" ToRole="GRAFICO" />
+  </EntityType>
+  <Association Name="ARCHIVO_CSV_GRAFICO_FK">
+    <End Type="graficosModel.GRAFICO" Role="GRAFICO" Multiplicity="1" />
+    <End Type="graficosModel.ARCHIVO_CSV" Role="ARCHIVO_CSV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GRAFICO">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ARCHIVO_CSV">
+        <PropertyRef Name="GRAFICO_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

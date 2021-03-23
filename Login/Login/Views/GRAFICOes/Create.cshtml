@@ -262,6 +262,7 @@
     function asignarNombre() {
         //alert(document.getElementById("CATEGORIA_id").find("option:selected").text());
         var categoria = $("#CATEGORIA_id").find("option:selected").text().toLowerCase();
+        alert(categoria.substring(categoria.length - 2, categoria.length))
         var parametro = $("#PARAMETRO_id").find("option:selected").text().toLowerCase();
         var detalle = $("#DETALLE_id").find("option:selected").text().toLowerCase();
         var territorio = $("#TERRITORIO_id").find("option:selected").text().toLowerCase();

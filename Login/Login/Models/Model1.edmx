@@ -4,16 +4,26 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="graficosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="graficosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ARCHIVO_CSV">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="250" />
+          <Property Name="data" Type="varbinary" MaxLength="1" />
+          <Property Name="auxiliar" Type="varchar" MaxLength="250" />
+          <Property Name="GRAFICO_id" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityType Name="CATEGORIA">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="bigint" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="250" />
           <Property Name="descripcion" Type="varchar" MaxLength="250" />
           <Property Name="auxiliar" Type="varchar" MaxLength="250" />
-          <Property Name="PRODUCTO_id" Type="int" Nullable="false" />
+          <Property Name="PRODUCTO_id" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="DETALLE">
           <Key>
@@ -39,7 +49,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="bigint" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="250" />
           <Property Name="descripcion" Type="varchar" MaxLength="2500" />
           <Property Name="titulo" Type="varchar" MaxLength="250" />
@@ -55,7 +65,7 @@
           <Property Name="shopify" Type="varchar" MaxLength="250" />
           <Property Name="auxiliar" Type="varchar" MaxLength="250" />
           <Property Name="rango_edad" Type="varchar" MaxLength="250" />
-          <Property Name="CATEGORIA_id" Type="int" Nullable="false" />
+          <Property Name="CATEGORIA_id" Type="bigint" Nullable="false" />
           <Property Name="PARAMETRO_id" Type="int" Nullable="false" />
           <Property Name="DETALLE_id" Type="int" Nullable="false" />
           <Property Name="TERRITORIO_id" Type="int" Nullable="false" />
@@ -146,15 +156,15 @@
           <Property Name="descripcion" Type="varchar" MaxLength="250" />
           <Property Name="auxiliar" Type="varchar" MaxLength="250" />
         </EntityType>
-        <Association Name="CATEGORIA_PRODUCTO_FK">
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
-          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="*" />
+        <Association Name="ARCHIVO_CSV_GRAFICO_FK">
+          <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="1" />
+          <End Role="ARCHIVO_CSV" Type="Self.ARCHIVO_CSV" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRODUCTO">
+            <Principal Role="GRAFICO">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="CATEGORIA">
-              <PropertyRef Name="PRODUCTO_id" />
+            <Dependent Role="ARCHIVO_CSV">
+              <PropertyRef Name="GRAFICO_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -279,6 +289,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="graficosModelStoreContainer">
+          <EntitySet Name="ARCHIVO_CSV" EntityType="Self.ARCHIVO_CSV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETALLE" EntityType="Self.DETALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FUENTE" EntityType="Self.FUENTE" Schema="dbo" store:Type="Tables" />
@@ -291,9 +302,9 @@
           <EntitySet Name="TEMPORALIDAD" EntityType="Self.TEMPORALIDAD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TERRITORIO" EntityType="Self.TERRITORIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_GRAFICO" EntityType="Self.TIPO_GRAFICO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="CATEGORIA_PRODUCTO_FK" Association="Self.CATEGORIA_PRODUCTO_FK">
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+          <AssociationSet Name="ARCHIVO_CSV_GRAFICO_FK" Association="Self.ARCHIVO_CSV_GRAFICO_FK">
+            <End Role="GRAFICO" EntitySet="GRAFICO" />
+            <End Role="ARCHIVO_CSV" EntitySet="ARCHIVO_CSV" />
           </AssociationSet>
           <AssociationSet Name="GRAFICO_CATEGORIA_FK" Association="Self.GRAFICO_CATEGORIA_FK">
             <End Role="CATEGORIA" EntitySet="CATEGORIA" />
@@ -336,8 +347,7 @@
             <End Role="SECTOR" EntitySet="SECTOR" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="graficosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -415,6 +425,7 @@
           <NavigationProperty Name="TEMPORALIDAD" Relationship="Self.GRAFICO_TEMPORALIDAD_FK" FromRole="GRAFICO" ToRole="TEMPORALIDAD" />
           <NavigationProperty Name="TERRITORIO" Relationship="Self.GRAFICO_TERRITORIO_FK" FromRole="GRAFICO" ToRole="TERRITORIO" />
           <NavigationProperty Name="TIPO_GRAFICO" Relationship="Self.GRAFICO_TIPO_GRAFICO_FK" FromRole="GRAFICO" ToRole="TIPO_GRAFICO" />
+          <NavigationProperty Name="ARCHIVO_CSV" Relationship="graficosModel.ARCHIVO_CSV_GRAFICO_FK" FromRole="GRAFICO" ToRole="ARCHIVO_CSV" />
         </EntityType>
         <EntityType Name="INDUSTRIA">
           <Key>
@@ -693,7 +704,35 @@
             <End Role="SECTOR" EntitySet="SECTOR" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
+          <EntitySet Name="ARCHIVO_CSV" EntityType="graficosModel.ARCHIVO_CSV" />
+          <AssociationSet Name="ARCHIVO_CSV_GRAFICO_FK" Association="graficosModel.ARCHIVO_CSV_GRAFICO_FK">
+            <End Role="GRAFICO" EntitySet="GRAFICO" />
+            <End Role="ARCHIVO_CSV" EntitySet="ARCHIVO_CSV" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ARCHIVO_CSV">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="auxiliar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="GRAFICO_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GRAFICO" Relationship="graficosModel.ARCHIVO_CSV_GRAFICO_FK" FromRole="ARCHIVO_CSV" ToRole="GRAFICO" />
+        </EntityType>
+        <Association Name="ARCHIVO_CSV_GRAFICO_FK">
+          <End Type="graficosModel.GRAFICO" Role="GRAFICO" Multiplicity="1" />
+          <End Type="graficosModel.ARCHIVO_CSV" Role="ARCHIVO_CSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRAFICO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ARCHIVO_CSV">
+              <PropertyRef Name="GRAFICO_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -850,6 +889,17 @@
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARCHIVO_CSV">
+            <EntityTypeMapping TypeName="graficosModel.ARCHIVO_CSV">
+              <MappingFragment StoreEntitySet="ARCHIVO_CSV">
+                <ScalarProperty Name="GRAFICO_id" ColumnName="GRAFICO_id" />
+                <ScalarProperty Name="auxiliar" ColumnName="auxiliar" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

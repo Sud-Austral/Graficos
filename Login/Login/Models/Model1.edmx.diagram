@@ -28,6 +28,8 @@
         <AssociationConnector Association="graficosModel.GRAFICO_TIPO_GRAFICO_FK" ManuallyRouted="false" />
         <AssociationConnector Association="graficosModel.SECTOR_INDUSTRIA_FK" ManuallyRouted="false" />
         <AssociationConnector Association="graficosModel.PRODUCTO_SECTOR_FK" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="graficosModel.ARCHIVO_CSV" Width="1.5" PointX="12" PointY="4.25" />
+        <AssociationConnector Association="graficosModel.ARCHIVO_CSV_GRAFICO_FK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
