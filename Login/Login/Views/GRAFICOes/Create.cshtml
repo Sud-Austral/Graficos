@@ -267,9 +267,104 @@
         var territorio = $("#TERRITORIO_id").find("option:selected").text().toLowerCase();
         var temporalidad = $("#TEMPORALIDAD_id").find("option:selected").text().toLowerCase();
         var fuente = $("#fuente_id").find("option:selected").text().toLowerCase();
-        var nombre_Compelto = parametro + "_" + categoria + "_" +  detalle + "_" + territorio + "_" + temporalidad ; //+ "_" + tipo_grafico + "_" + fuente
-        document.getElementById("nombre").value = nombre_Compelto.replace(" ","_");
-            //alert($("#CATEGORIA_id").find("option:selected").text());
+        var nombre_Compelto = parametro + "_" + categoria + "_" + detalle + "_" + territorio + "_" + temporalidad;
+        var titulo = "";
+        var categoria_titulo = $("#CATEGORIA_id").find("option:selected").text();
+        //alert(categoria_titulo);
+        /*switch (parametro) {
+            case "exportacion":
+                titulo = parametro + " de " + categoria + "_" + detalle + "_" + territorio + "_" + temporalidad;
+
+                switch (detalle) {
+                    case "dolares":
+                        titulo = parametro + " de " + categoria + " en " + detalle + "_" + territorio + "_" + temporalidad;
+
+                        switch (territorio) {
+                            case "chile":
+                                titulo = parametro + " de " + categoria + " en " + detalle + "en" + territorio + "_" + temporalidad;
+
+                                switch (temporalidad) {
+                                    case (temporalidad.substring(1, 3) = "año"):
+                                        titulo = parametro + " de " + categoria + " en " + detalle + "en" + territorio + " durante el " + temporalidad;
+                                        
+                                        alert(titulo);
+                                break;
+                                }
+                    break;
+                        }
+           break;
+                
+           
+        
+            case "producción":
+                titulo = parametro + " de " + categoria + "_" + detalle + "_" + territorio + "_" + temporalidad;
+                break;
+            default:
+                //alert("el valor del parametro es : " + parametro);
+                //Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
+                break;
+        }
+       */
+        
+       /* var territorio_titulo = territorio.charAt(0).toUpperCase() + territorio.slice(1);
+        if (parametro = "exportacion") {
+            titulo = parametro + " de " + categoria + "_" + territorio_titulo + "_" + temporalidad;
+            if (detalle = "dolares") {
+                titulo = parametro + " de " + categoria + "_" + territorio_titulo + "_" + temporalidad;
+                if (territorio = "chile") {
+                    titulo = parametro + " de " + categoria + " en " + territorio_titulo + "_" + temporalidad;
+                    if (temporalidad.substring(0, 3) == "año") {
+                    //if (temporalidad = "año") {
+                        titulo = parametro + " de " + categoria + " en " + territorio_titulo + " durante el " + temporalidad;
+                        titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
+                        alert(titulo);    
+                    }
+                }
+            }
+            
+        }
+        else {
+            titulo = parametro + "_" + categoria + "_" + detalle + "_" + territorio_titulo + "_" + temporalidad; //+ "_" + tipo_grafico + "_" + fuente
+        }
+        */
+        //function asignarTitulo() {
+        var categoria_titulo = $("#CATEGORIA_id").find("option:selected").text();
+        var territorio_titulo = territorio.charAt(0).toUpperCase() + territorio.slice(1);
+        var temporalidad_titulo = $("#TEMPORALIDAD_id").find("option:selected").text();
+        var titulo = "";
+
+        if (parametro = "exportacion") {
+            titulo = parametro + " de " + categoria_titulo + "_" + territorio_titulo + "_" + temporalidad;
+            if (territorio = "chile") {
+                titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + "_" + temporalidad;
+                if (temporalidad.substring(0, 3) == "año") {
+                    //if (temporalidad = "año") {
+                    titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " durante el " + temporalidad;
+                    titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
+                    alert(titulo);
+                } else {
+                    titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
+                }
+            }
+        }
+        else if (parametro = "produccion") {
+            titulo = parametro + " de " + categoria_titulo + "_" + territorio_titulo + "_" + temporalidad;
+            if (territorio = "chile") {
+                titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + "_" + temporalidad;
+                if (temporalidad.substring(0, 3) == "año") {
+                    //if (temporalidad = "año") {
+                    titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " durante el " + temporalidad;
+                    titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
+                    alert(titulo);
+                } else {
+                    titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
+                }
+            }
+        }
+
+        //}
+        document.getElementById("nombre").value = nombre_Compelto;//.replace(" ","_");
+        //alert($("#CATEGORIA_id").find("option:selected").text());
     }
 
     document.getElementById("CATEGORIA_id").addEventListener("change", asignarNombre);
@@ -277,4 +372,9 @@
     document.getElementById("DETALLE_id").addEventListener("change", asignarNombre);
     document.getElementById("TERRITORIO_id").addEventListener("change", asignarNombre);
     document.getElementById("TEMPORALIDAD_id").addEventListener("change", asignarNombre);
+
+    
+
+    
+
 </script>
