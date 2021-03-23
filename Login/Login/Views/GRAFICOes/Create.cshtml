@@ -91,27 +91,37 @@
                             @Html.ValidationMessageFor(model => model.FUENTE_id, "", new { @class = "text-danger" })
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RESPONSABLE_id, "Responsable_id:", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("RESPONSABLE_id", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.RESPONSABLE_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <hr />
-<div class="container-fluid" style="color:azure">
+<div class="container-fluid">
 
     <div class="row">
-        <div class="col-sm-6">
-            <div class="card" style="border:0px; background-color:#808080">
+        <div class="col-12">
+            
+            <div class="card" >
                 <div class="card-body">
+
                     <div class="form-group">
-                        @Html.LabelFor(model => model.nombre, "Nombre:", htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.LabelFor(model => model.nombre, "Nombre:", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-12">
+                            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control col-12" } })
                             @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
-                    
+
                     <div class="form-group">
                         @Html.LabelFor(model => model.titulo, "Título:", htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-10">
@@ -120,7 +130,7 @@
                         </div>
                     </div>
 
-                    
+
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.tags, "Tags:", htmlAttributes: new { @class = "control-label col-md-4" })
@@ -173,12 +183,12 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card" style="border:0px;background-color:#808080">
+            <div class="card" style="border:0px">
                 <div class="card-body">
                      <div class="form-group">
                         @Html.LabelFor(model => model.descripcion, "Descripción:", htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control col-12" } })
                             @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -266,13 +276,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.RESPONSABLE_id, "Responsable_id:", htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-10">
-                            @Html.DropDownList("RESPONSABLE_id", null, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.RESPONSABLE_id, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                    
                     </div>
                 </div>
             </div>
