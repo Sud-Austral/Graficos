@@ -28,7 +28,6 @@ namespace Login.Models
         public virtual DbSet<CATEGORIA> CATEGORIA { get; set; }
         public virtual DbSet<DETALLE> DETALLE { get; set; }
         public virtual DbSet<FUENTE> FUENTE { get; set; }
-        public virtual DbSet<GRAFICO> GRAFICO { get; set; }
         public virtual DbSet<INDUSTRIA> INDUSTRIA { get; set; }
         public virtual DbSet<PARAMETRO> PARAMETRO { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
@@ -37,6 +36,7 @@ namespace Login.Models
         public virtual DbSet<TEMPORALIDAD> TEMPORALIDAD { get; set; }
         public virtual DbSet<TERRITORIO> TERRITORIO { get; set; }
         public virtual DbSet<TIPO_GRAFICO> TIPO_GRAFICO { get; set; }
-        public virtual DbSet<ARCHIVO_CSV> ARCHIVO_CSV { get; set; }
+        public virtual DbSet<UNIDAD_MEDIDA> UNIDAD_MEDIDA { get; set; }
+        public virtual DbSet<GRAFICO> GRAFICO { get; set; }
     }
 }

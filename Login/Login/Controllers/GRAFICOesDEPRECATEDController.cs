@@ -10,14 +10,14 @@ using Login.Models;
 
 namespace Login.Controllers
 {
-    public class GRAFICOesController : Controller
+    public class GRAFICOesDEPRECATEDController : Controller
     {
         private graficosEntities db = new graficosEntities();
 
         // GET: GRAFICOes
         public ActionResult Index()
         {
-            var gRAFICO = db.GRAFICO.Include(g => g.CATEGORIA).Include(g => g.DETALLE).Include(g => g.FUENTE).Include(g => g.PARAMETRO).Include(g => g.RESPONSABLE1).Include(g => g.TEMPORALIDAD).Include(g => g.TERRITORIO).Include(g => g.TIPO_GRAFICO).Include(g => g.UNIDAD_MEDIDA1);
+            var gRAFICO = db.GRAFICO.Include(g => g.CATEGORIA).Include(g => g.DETALLE).Include(g => g.FUENTE).Include(g => g.PARAMETRO).Include(g => g.RESPONSABLE1).Include(g => g.TEMPORALIDAD).Include(g => g.TERRITORIO).Include(g => g.TIPO_GRAFICO);
             return View(gRAFICO.ToList());
         }
 
@@ -47,7 +47,6 @@ namespace Login.Controllers
             ViewBag.TEMPORALIDAD_id = new SelectList(db.TEMPORALIDAD, "id", "nombre");
             ViewBag.TERRITORIO_id = new SelectList(db.TERRITORIO, "id", "nombre");
             ViewBag.TIPO_GRAFICO_id = new SelectList(db.TIPO_GRAFICO, "id", "nombre");
-            ViewBag.UNIDAD_MEDIDA_id = new SelectList(db.UNIDAD_MEDIDA, "id", "nombre");
             return View();
         }
 
@@ -56,7 +55,7 @@ namespace Login.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nombre,descripcion,titulo,subtitulo,tags,url,iso_pais,nivel_administrativo,descripcion_larga,fecha_publicacion,idioma,responsable,shopify,auxiliar,rango_edad,CATEGORIA_id,PARAMETRO_id,DETALLE_id,TERRITORIO_id,TEMPORALIDAD_id,TIPO_GRAFICO_id,FUENTE_id,unidad_medida,tamanio_muestra,caracteristica_especial,auxiliar_1,RESPONSABLE_id,UNIDAD_MEDIDA_id")] GRAFICO gRAFICO)
+        public ActionResult Create([Bind(Include = "id,nombre,descripcion,titulo,subtitulo,tags,url,iso_pais,nivel_administrativo,descripcion_larga,fecha_publicacion,idioma,responsable,shopify,auxiliar,rango_edad,CATEGORIA_id,PARAMETRO_id,DETALLE_id,TERRITORIO_id,TEMPORALIDAD_id,TIPO_GRAFICO_id,FUENTE_id,unidad_medida,tamanio_muestra,caracteristica_especial,auxiliar_1,RESPONSABLE_id")] GRAFICO gRAFICO)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +73,6 @@ namespace Login.Controllers
             ViewBag.TEMPORALIDAD_id = new SelectList(db.TEMPORALIDAD, "id", "nombre", gRAFICO.TEMPORALIDAD_id);
             ViewBag.TERRITORIO_id = new SelectList(db.TERRITORIO, "id", "nombre", gRAFICO.TERRITORIO_id);
             ViewBag.TIPO_GRAFICO_id = new SelectList(db.TIPO_GRAFICO, "id", "nombre", gRAFICO.TIPO_GRAFICO_id);
-            ViewBag.UNIDAD_MEDIDA_id = new SelectList(db.UNIDAD_MEDIDA, "id", "nombre", gRAFICO.UNIDAD_MEDIDA_id);
             return View(gRAFICO);
         }
 
@@ -98,7 +96,6 @@ namespace Login.Controllers
             ViewBag.TEMPORALIDAD_id = new SelectList(db.TEMPORALIDAD, "id", "nombre", gRAFICO.TEMPORALIDAD_id);
             ViewBag.TERRITORIO_id = new SelectList(db.TERRITORIO, "id", "nombre", gRAFICO.TERRITORIO_id);
             ViewBag.TIPO_GRAFICO_id = new SelectList(db.TIPO_GRAFICO, "id", "nombre", gRAFICO.TIPO_GRAFICO_id);
-            ViewBag.UNIDAD_MEDIDA_id = new SelectList(db.UNIDAD_MEDIDA, "id", "nombre", gRAFICO.UNIDAD_MEDIDA_id);
             return View(gRAFICO);
         }
 
@@ -107,7 +104,7 @@ namespace Login.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nombre,descripcion,titulo,subtitulo,tags,url,iso_pais,nivel_administrativo,descripcion_larga,fecha_publicacion,idioma,responsable,shopify,auxiliar,rango_edad,CATEGORIA_id,PARAMETRO_id,DETALLE_id,TERRITORIO_id,TEMPORALIDAD_id,TIPO_GRAFICO_id,FUENTE_id,unidad_medida,tamanio_muestra,caracteristica_especial,auxiliar_1,RESPONSABLE_id,UNIDAD_MEDIDA_id")] GRAFICO gRAFICO)
+        public ActionResult Edit([Bind(Include = "id,nombre,descripcion,titulo,subtitulo,tags,url,iso_pais,nivel_administrativo,descripcion_larga,fecha_publicacion,idioma,responsable,shopify,auxiliar,rango_edad,CATEGORIA_id,PARAMETRO_id,DETALLE_id,TERRITORIO_id,TEMPORALIDAD_id,TIPO_GRAFICO_id,FUENTE_id,unidad_medida,tamanio_muestra,caracteristica_especial,auxiliar_1,RESPONSABLE_id")] GRAFICO gRAFICO)
         {
             if (ModelState.IsValid)
             {
@@ -123,7 +120,6 @@ namespace Login.Controllers
             ViewBag.TEMPORALIDAD_id = new SelectList(db.TEMPORALIDAD, "id", "nombre", gRAFICO.TEMPORALIDAD_id);
             ViewBag.TERRITORIO_id = new SelectList(db.TERRITORIO, "id", "nombre", gRAFICO.TERRITORIO_id);
             ViewBag.TIPO_GRAFICO_id = new SelectList(db.TIPO_GRAFICO, "id", "nombre", gRAFICO.TIPO_GRAFICO_id);
-            ViewBag.UNIDAD_MEDIDA_id = new SelectList(db.UNIDAD_MEDIDA, "id", "nombre", gRAFICO.UNIDAD_MEDIDA_id);
             return View(gRAFICO);
         }
 

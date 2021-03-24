@@ -14,12 +14,6 @@ namespace Login.Models
     
     public partial class GRAFICO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GRAFICO()
-        {
-            this.ARCHIVO_CSV = new HashSet<ARCHIVO_CSV>();
-        }
-    
         public int id { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
@@ -48,6 +42,7 @@ namespace Login.Models
         public string caracteristica_especial { get; set; }
         public string auxiliar_1 { get; set; }
         public int RESPONSABLE_id { get; set; }
+        public int UNIDAD_MEDIDA_id { get; set; }
     
         public virtual CATEGORIA CATEGORIA { get; set; }
         public virtual DETALLE DETALLE { get; set; }
@@ -57,7 +52,6 @@ namespace Login.Models
         public virtual TEMPORALIDAD TEMPORALIDAD { get; set; }
         public virtual TERRITORIO TERRITORIO { get; set; }
         public virtual TIPO_GRAFICO TIPO_GRAFICO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ARCHIVO_CSV> ARCHIVO_CSV { get; set; }
+        public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA1 { get; set; }
     }
 }

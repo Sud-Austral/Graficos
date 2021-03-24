@@ -185,11 +185,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ARCHIVO_CSVController.cs" />
     <Compile Include="Controllers\CATEGORIAsController.cs" />
     <Compile Include="Controllers\DETALLEsController.cs" />
     <Compile Include="Controllers\FUENTEsController.cs" />
     <Compile Include="Controllers\GRAFICOesController.cs" />
+    <Compile Include="Controllers\GRAFICOesDEPRECATEDController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\INDUSTRIAsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -200,13 +200,11 @@
     <Compile Include="Controllers\TEMPORALIDADsController.cs" />
     <Compile Include="Controllers\TERRITORIOsController.cs" />
     <Compile Include="Controllers\TIPO_GRAFICOController.cs" />
+    <Compile Include="Controllers\UNIDAD_MEDIDAController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ARCHIVO_CSV.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\CATEGORIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -258,6 +256,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TIPO_GRAFICO.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UNIDAD_MEDIDA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Util.cs" />
@@ -458,11 +459,11 @@
     <Content Include="Views\FUENTEs\Details.cshtml" />
     <Content Include="Views\FUENTEs\Edit.cshtml" />
     <Content Include="Views\FUENTEs\Index.cshtml" />
-    <Content Include="Views\GRAFICOes\Create.cshtml" />
-    <Content Include="Views\GRAFICOes\Delete.cshtml" />
-    <Content Include="Views\GRAFICOes\Details.cshtml" />
-    <Content Include="Views\GRAFICOes\Edit.cshtml" />
-    <Content Include="Views\GRAFICOes\Index.cshtml" />
+    <Content Include="Views\GRAFICOesDEPRECATED\Create.cshtml" />
+    <Content Include="Views\GRAFICOesDEPRECATED\Delete.cshtml" />
+    <Content Include="Views\GRAFICOesDEPRECATED\Details.cshtml" />
+    <Content Include="Views\GRAFICOesDEPRECATED\Edit.cshtml" />
+    <Content Include="Views\GRAFICOesDEPRECATED\Index.cshtml" />
     <Content Include="Views\INDUSTRIAs\Create.cshtml" />
     <Content Include="Views\INDUSTRIAs\Delete.cshtml" />
     <Content Include="Views\INDUSTRIAs\Details.cshtml" />
@@ -503,11 +504,16 @@
     <Content Include="Views\TIPO_GRAFICO\Details.cshtml" />
     <Content Include="Views\TIPO_GRAFICO\Edit.cshtml" />
     <Content Include="Views\TIPO_GRAFICO\Index.cshtml" />
-    <Content Include="Views\ARCHIVO_CSV\Create.cshtml" />
-    <Content Include="Views\ARCHIVO_CSV\Delete.cshtml" />
-    <Content Include="Views\ARCHIVO_CSV\Details.cshtml" />
-    <Content Include="Views\ARCHIVO_CSV\Edit.cshtml" />
-    <Content Include="Views\ARCHIVO_CSV\Index.cshtml" />
+    <Content Include="Views\GRAFICOes\Create.cshtml" />
+    <Content Include="Views\GRAFICOes\Delete.cshtml" />
+    <Content Include="Views\GRAFICOes\Details.cshtml" />
+    <Content Include="Views\GRAFICOes\Edit.cshtml" />
+    <Content Include="Views\GRAFICOes\Index.cshtml" />
+    <Content Include="Views\UNIDAD_MEDIDA\Create.cshtml" />
+    <Content Include="Views\UNIDAD_MEDIDA\Delete.cshtml" />
+    <Content Include="Views\UNIDAD_MEDIDA\Details.cshtml" />
+    <Content Include="Views\UNIDAD_MEDIDA\Edit.cshtml" />
+    <Content Include="Views\UNIDAD_MEDIDA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

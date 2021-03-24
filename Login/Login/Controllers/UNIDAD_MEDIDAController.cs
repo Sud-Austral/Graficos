@@ -10,113 +10,108 @@ using Login.Models;
 
 namespace Login.Controllers
 {
-    public class ARCHIVO_CSVController : Controller
+    public class UNIDAD_MEDIDAController : Controller
     {
         private graficosEntities db = new graficosEntities();
 
-        // GET: ARCHIVO_CSV
+        // GET: UNIDAD_MEDIDA
         public ActionResult Index()
         {
-            var aRCHIVO_CSV = db.ARCHIVO_CSV.Include(a => a.GRAFICO);
-            return View(aRCHIVO_CSV.ToList());
+            return View(db.UNIDAD_MEDIDA.ToList());
         }
 
-        // GET: ARCHIVO_CSV/Details/5
+        // GET: UNIDAD_MEDIDA/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ARCHIVO_CSV aRCHIVO_CSV = db.ARCHIVO_CSV.Find(id);
-            if (aRCHIVO_CSV == null)
+            UNIDAD_MEDIDA uNIDAD_MEDIDA = db.UNIDAD_MEDIDA.Find(id);
+            if (uNIDAD_MEDIDA == null)
             {
                 return HttpNotFound();
             }
-            return View(aRCHIVO_CSV);
+            return View(uNIDAD_MEDIDA);
         }
 
-        // GET: ARCHIVO_CSV/Create
+        // GET: UNIDAD_MEDIDA/Create
         public ActionResult Create()
         {
-            ViewBag.GRAFICO_id = new SelectList(db.GRAFICO, "id", "nombre");
             return View();
         }
 
-        // POST: ARCHIVO_CSV/Create
+        // POST: UNIDAD_MEDIDA/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "id,nombre,data,auxiliar,GRAFICO_id")] ARCHIVO_CSV aRCHIVO_CSV, HttpPostedFileBase fileBase)
-        public ActionResult Create(ARCHIVO_CSV aRCHIVO_CSV, HttpPostedFileBase data)
+        public ActionResult Create([Bind(Include = "id,nombre,descripcion,auxiliar")] UNIDAD_MEDIDA uNIDAD_MEDIDA)
         {
             if (ModelState.IsValid)
             {
-                db.ARCHIVO_CSV.Add(aRCHIVO_CSV);
+                uNIDAD_MEDIDA.id = db.UNIDAD_MEDIDA.Max(x => x.id) + 1;
+                db.UNIDAD_MEDIDA.Add(uNIDAD_MEDIDA);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GRAFICO_id = new SelectList(db.GRAFICO, "id", "nombre", aRCHIVO_CSV.GRAFICO_id);
-            return View(aRCHIVO_CSV);
+            return View(uNIDAD_MEDIDA);
         }
 
-        // GET: ARCHIVO_CSV/Edit/5
+        // GET: UNIDAD_MEDIDA/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ARCHIVO_CSV aRCHIVO_CSV = db.ARCHIVO_CSV.Find(id);
-            if (aRCHIVO_CSV == null)
+            UNIDAD_MEDIDA uNIDAD_MEDIDA = db.UNIDAD_MEDIDA.Find(id);
+            if (uNIDAD_MEDIDA == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.GRAFICO_id = new SelectList(db.GRAFICO, "id", "nombre", aRCHIVO_CSV.GRAFICO_id);
-            return View(aRCHIVO_CSV);
+            return View(uNIDAD_MEDIDA);
         }
 
-        // POST: ARCHIVO_CSV/Edit/5
+        // POST: UNIDAD_MEDIDA/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nombre,data,auxiliar,GRAFICO_id")] ARCHIVO_CSV aRCHIVO_CSV)
+        public ActionResult Edit([Bind(Include = "id,nombre,descripcion,auxiliar")] UNIDAD_MEDIDA uNIDAD_MEDIDA)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(aRCHIVO_CSV).State = EntityState.Modified;
+                db.Entry(uNIDAD_MEDIDA).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GRAFICO_id = new SelectList(db.GRAFICO, "id", "nombre", aRCHIVO_CSV.GRAFICO_id);
-            return View(aRCHIVO_CSV);
+            return View(uNIDAD_MEDIDA);
         }
 
-        // GET: ARCHIVO_CSV/Delete/5
+        // GET: UNIDAD_MEDIDA/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ARCHIVO_CSV aRCHIVO_CSV = db.ARCHIVO_CSV.Find(id);
-            if (aRCHIVO_CSV == null)
+            UNIDAD_MEDIDA uNIDAD_MEDIDA = db.UNIDAD_MEDIDA.Find(id);
+            if (uNIDAD_MEDIDA == null)
             {
                 return HttpNotFound();
             }
-            return View(aRCHIVO_CSV);
+            return View(uNIDAD_MEDIDA);
         }
 
-        // POST: ARCHIVO_CSV/Delete/5
+        // POST: UNIDAD_MEDIDA/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ARCHIVO_CSV aRCHIVO_CSV = db.ARCHIVO_CSV.Find(id);
-            db.ARCHIVO_CSV.Remove(aRCHIVO_CSV);
+            UNIDAD_MEDIDA uNIDAD_MEDIDA = db.UNIDAD_MEDIDA.Find(id);
+            db.UNIDAD_MEDIDA.Remove(uNIDAD_MEDIDA);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

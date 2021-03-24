@@ -12,14 +12,20 @@ namespace Login.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ARCHIVO_CSV
+    public partial class UNIDAD_MEDIDA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UNIDAD_MEDIDA()
+        {
+            this.GRAFICO = new HashSet<GRAFICO>();
+        }
+    
         public int id { get; set; }
         public string nombre { get; set; }
-        public byte[] data { get; set; }
+        public string descripcion { get; set; }
         public string auxiliar { get; set; }
-        public int GRAFICO_id { get; set; }
     
-        public virtual GRAFICO GRAFICO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GRAFICO> GRAFICO { get; set; }
     }
 }

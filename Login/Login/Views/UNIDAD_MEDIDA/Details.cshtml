@@ -1,4 +1,4 @@
-﻿@model Login.Models.ARCHIVO_CSV
+﻿@model Login.Models.UNIDAD_MEDIDA
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>ARCHIVO_CSV</h4>
+    <h4>UNIDAD_MEDIDA</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,11 +19,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.data)
+            @Html.DisplayNameFor(model => model.descripcion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.data)
+            @Html.DisplayFor(model => model.descripcion)
         </dd>
 
         <dt>
@@ -32,14 +32,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.auxiliar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GRAFICO.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GRAFICO.nombre)
         </dd>
 
     </dl>

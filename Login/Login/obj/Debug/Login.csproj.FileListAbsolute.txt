@@ -249,7 +249,6 @@ D:\GitHub\Graficos\Login\Login\obj\Debug\Login.csproj.CoreCompileInputs.cache
 D:\GitHub\Graficos\Login\Login\obj\Debug\Login.csproj.CopyComplete
 D:\GitHub\Graficos\Login\Login\obj\Debug\Login.dll
 D:\GitHub\Graficos\Login\Login\obj\Debug\Login.pdb
-D:\GitHub\Graficos\Login\Login\obj\Debug\Login.csprojAssemblyReference.cache
 C:\Users\Ian\Documents\GitHub\Graficos\Login\Login\bin\Login.dll.config
 C:\Users\Ian\Documents\GitHub\Graficos\Login\Login\bin\Login.dll
 C:\Users\Ian\Documents\GitHub\Graficos\Login\Login\bin\Login.pdb
@@ -502,3 +501,4 @@ C:\Users\gusti\OneDrive\Documentos\GitHub\Graficos\Login\Login\obj\Debug\Login.c
 C:\Users\gusti\OneDrive\Documentos\GitHub\Graficos\Login\Login\obj\Debug\Login.csproj.CopyComplete
 C:\Users\gusti\OneDrive\Documentos\GitHub\Graficos\Login\Login\obj\Debug\Login.dll
 C:\Users\gusti\OneDrive\Documentos\GitHub\Graficos\Login\Login\obj\Debug\Login.pdb
+D:\GitHub\Graficos\Login\Login\obj\Debug\Login.csprojAssemblyReference.cache
