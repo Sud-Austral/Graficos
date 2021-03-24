@@ -282,11 +282,8 @@
                 titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + "_" + temporalidad;
                 if (temporalidad.substring(0, 3) == "año") {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " durante el " + temporalidad;
-                    titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
-                    alert(titulo);
-                } else {
-                    titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
-                }
+                    titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);                   
+                } 
             }
         }
         else if (parametro == "producción") {
@@ -296,15 +293,14 @@
                 if (temporalidad.substring(0, 3) == "año") {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " durante el " + temporalidad;
                     titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
-                    alert(titulo);
-                } else {
-                    titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
-                }
+                } 
             }
         }        
         //}
         document.getElementById("nombre").value = nombre_Compelto;//.replace(" ","_");
         //alert($("#CATEGORIA_id").find("option:selected").text());
+
+        document.getElementById("titulo").value = titulo;
     }
 
     document.getElementById("CATEGORIA_id").addEventListener("change", asignarNombre);
