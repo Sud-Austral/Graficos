@@ -298,12 +298,13 @@
                     titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
 
                     //alert(titulo);
-                } else {
+                }
+                else {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
                 }
                 } 
             }
-        }
+        
         else if (parametro == "producción") {
             titulo = parametro + " de " + categoria_titulo + "_" + territorio_titulo + "_" + temporalidad;
             if (territorio == "chile") {
@@ -313,14 +314,15 @@
                     titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
 
                     //alert(titulo);
-                } else {
+                }
+                else {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
                 }
 
                 } 
 
             }
-        }        
+             
         //}
         document.getElementById("nombre").value = nombre_Compelto;//.replace(" ","_");
         //alert($("#CATEGORIA_id").find("option:selected").text());
