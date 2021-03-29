@@ -11,7 +11,8 @@ namespace Login.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class GRAFICO
     {
         public int id { get; set; }
@@ -23,7 +24,10 @@ namespace Login.Models
         public string url { get; set; }
         public string iso_pais { get; set; }
         public string nivel_administrativo { get; set; }
+
+        [DataType(DataType.MultilineText)]
         public string descripcion_larga { get; set; }
+        [DataType(DataType.Date)]
         public string fecha_publicacion { get; set; }
         public string idioma { get; set; }
         public string responsable { get; set; }
