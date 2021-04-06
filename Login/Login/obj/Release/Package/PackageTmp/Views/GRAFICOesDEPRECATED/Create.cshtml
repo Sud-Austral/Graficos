@@ -16,16 +16,70 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @*
-                <div class="form-group">
-                    @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
-                </div>
-
+        <div class="form-group">
+            @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+            </div>
         </div>
     *@
+    <div class="form-group">
+        @Html.LabelFor(model => model.CATEGORIA_id, "CATEGORIA_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CATEGORIA_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CATEGORIA_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PARAMETRO_id, "PARAMETRO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PARAMETRO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PARAMETRO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DETALLE_id, "DETALLE_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("DETALLE_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DETALLE_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TERRITORIO_id, "TERRITORIO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TERRITORIO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TERRITORIO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TEMPORALIDAD_id, "TEMPORALIDAD_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TEMPORALIDAD_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TEMPORALIDAD_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TIPO_GRAFICO_id, "TIPO_GRAFICO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TIPO_GRAFICO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TIPO_GRAFICO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FUENTE_id, "FUENTE_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("FUENTE_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FUENTE_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -146,61 +200,7 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.CATEGORIA_id, "CATEGORIA_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("CATEGORIA_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CATEGORIA_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PARAMETRO_id, "PARAMETRO_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("PARAMETRO_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PARAMETRO_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DETALLE_id, "DETALLE_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("DETALLE_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.DETALLE_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TERRITORIO_id, "TERRITORIO_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TERRITORIO_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TERRITORIO_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TEMPORALIDAD_id, "TEMPORALIDAD_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TEMPORALIDAD_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TEMPORALIDAD_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TIPO_GRAFICO_id, "TIPO_GRAFICO_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TIPO_GRAFICO_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TIPO_GRAFICO_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.FUENTE_id, "FUENTE_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("FUENTE_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.FUENTE_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.unidad_medida, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -243,14 +243,6 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.UNIDAD_MEDIDA_id, "UNIDAD_MEDIDA_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("UNIDAD_MEDIDA_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.UNIDAD_MEDIDA_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
@@ -270,64 +262,110 @@
     function asignarNombre() {
         //alert(document.getElementById("CATEGORIA_id").find("option:selected").text());
         var categoria = $("#CATEGORIA_id").find("option:selected").text().toLowerCase();
-        //alert(categoria.substring(categoria.length - 2, categoria.length))
+        alert(categoria.substring(categoria.length - 2, categoria.length))
         var parametro = $("#PARAMETRO_id").find("option:selected").text().toLowerCase();
         var detalle = $("#DETALLE_id").find("option:selected").text().toLowerCase();
         var territorio = $("#TERRITORIO_id").find("option:selected").text().toLowerCase();
         var temporalidad = $("#TEMPORALIDAD_id").find("option:selected").text().toLowerCase();
         var fuente = $("#fuente_id").find("option:selected").text().toLowerCase();
         var nombre_Compelto = parametro + "_" + categoria + "_" + detalle + "_" + territorio + "_" + temporalidad;
+        var titulo = "";
+        var categoria_titulo = $("#CATEGORIA_id").find("option:selected").text();
+        //alert(categoria_titulo);
+        /*switch (parametro) {
+            case "exportacion":
+                titulo = parametro + " de " + categoria + "_" + detalle + "_" + territorio + "_" + temporalidad;
 
+                switch (detalle) {
+                    case "dolares":
+                        titulo = parametro + " de " + categoria + " en " + detalle + "_" + territorio + "_" + temporalidad;
+
+                        switch (territorio) {
+                            case "chile":
+                                titulo = parametro + " de " + categoria + " en " + detalle + "en" + territorio + "_" + temporalidad;
+
+                                switch (temporalidad) {
+                                    case (temporalidad.substring(1, 3) = "año"):
+                                        titulo = parametro + " de " + categoria + " en " + detalle + "en" + territorio + " durante el " + temporalidad;
+                                        
+                                        alert(titulo);
+                                break;
+                                }
+                    break;
+                        }
+           break;
+                
+           
         
+            case "producción":
+                titulo = parametro + " de " + categoria + "_" + detalle + "_" + territorio + "_" + temporalidad;
+                break;
+            default:
+                //alert("el valor del parametro es : " + parametro);
+                //Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
+                break;
+        }
+       */
         
+       /* var territorio_titulo = territorio.charAt(0).toUpperCase() + territorio.slice(1);
+        if (parametro = "exportacion") {
+            titulo = parametro + " de " + categoria + "_" + territorio_titulo + "_" + temporalidad;
+            if (detalle = "dolares") {
+                titulo = parametro + " de " + categoria + "_" + territorio_titulo + "_" + temporalidad;
+                if (territorio = "chile") {
+                    titulo = parametro + " de " + categoria + " en " + territorio_titulo + "_" + temporalidad;
+                    if (temporalidad.substring(0, 3) == "año") {
+                    //if (temporalidad = "año") {
+                        titulo = parametro + " de " + categoria + " en " + territorio_titulo + " durante el " + temporalidad;
+                        titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
+                        alert(titulo);    
+                    }
+                }
+            }
+            
+        }
+        else {
+            titulo = parametro + "_" + categoria + "_" + detalle + "_" + territorio_titulo + "_" + temporalidad; //+ "_" + tipo_grafico + "_" + fuente
+        }
+        */
         //function asignarTitulo() {
         var categoria_titulo = $("#CATEGORIA_id").find("option:selected").text();
         var territorio_titulo = territorio.charAt(0).toUpperCase() + territorio.slice(1);
         var temporalidad_titulo = $("#TEMPORALIDAD_id").find("option:selected").text();
         var titulo = "";
 
-        if (parametro == "exportacion") {
+        if (parametro = "exportacion") {
             titulo = parametro + " de " + categoria_titulo + "_" + territorio_titulo + "_" + temporalidad;
-            if (territorio == "chile") {
+            if (territorio = "chile") {
                 titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + "_" + temporalidad;
                 if (temporalidad.substring(0, 3) == "año") {
+                    //if (temporalidad = "año") {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " durante el " + temporalidad;
-
-                    titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);                   
-
                     titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
-
-                    //alert(titulo);
-                }
-                else {
+                    alert(titulo);
+                } else {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
                 }
-                } 
             }
-        
-        else if (parametro == "producción") {
+        }
+        else if (parametro = "produccion") {
             titulo = parametro + " de " + categoria_titulo + "_" + territorio_titulo + "_" + temporalidad;
-            if (territorio == "chile") {
+            if (territorio = "chile") {
                 titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + "_" + temporalidad;
                 if (temporalidad.substring(0, 3) == "año") {
+                    //if (temporalidad = "año") {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " durante el " + temporalidad;
                     titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
-
-                    //alert(titulo);
-                }
-                else {
+                    alert(titulo);
+                } else {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
                 }
-
-                } 
-
             }
-             
+        }
+
         //}
         document.getElementById("nombre").value = nombre_Compelto;//.replace(" ","_");
         //alert($("#CATEGORIA_id").find("option:selected").text());
-
-        document.getElementById("titulo").value = titulo;
     }
 
     document.getElementById("CATEGORIA_id").addEventListener("change", asignarNombre);
@@ -336,8 +374,8 @@
     document.getElementById("TERRITORIO_id").addEventListener("change", asignarNombre);
     document.getElementById("TEMPORALIDAD_id").addEventListener("change", asignarNombre);
 
+    
 
-
-
+    
 
 </script>

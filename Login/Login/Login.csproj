@@ -194,6 +194,7 @@
     <Compile Include="Controllers\INDUSTRIAsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PARAMETROesController.cs" />
+    <Compile Include="Controllers\PlotlyController.cs" />
     <Compile Include="Controllers\PRODUCTOesController.cs" />
     <Compile Include="Controllers\RESPONSABLEsController.cs" />
     <Compile Include="Controllers\SECTORsController.cs" />
@@ -272,6 +273,11 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\html\Bar_plot_medallas.html" />
+    <Content Include="Content\html\Box_Plot.html" />
+    <Content Include="Content\html\Bubble_Plot.html" />
+    <Content Include="Content\html\Line_plot_SP500.html" />
+    <Content Include="Content\html\Line_plot_Ventas.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -400,6 +406,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Content\html\Plot_Scatter_Iris.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -517,6 +524,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Plotly\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

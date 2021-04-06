@@ -62,6 +62,7 @@
     <Property Name="caracteristica_especial" Type="varchar" MaxLength="250" />
     <Property Name="auxiliar_1" Type="varchar" MaxLength="250" />
     <Property Name="RESPONSABLE_id" Type="int" Nullable="false" />
+    <Property Name="UNIDAD_MEDIDA_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="INDUSTRIA">
     <Key>
@@ -133,6 +134,15 @@
     <Property Name="nivel_administrativo" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="TIPO_GRAFICO">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="250" />
+    <Property Name="descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="auxiliar" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="UNIDAD_MEDIDA">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -249,6 +259,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="GRAFICO_UNIDAD_MEDIDA_FK">
+    <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="1" />
+    <End Role="GRAFICO" Type="Self.GRAFICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UNIDAD_MEDIDA">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="GRAFICO">
+        <PropertyRef Name="UNIDAD_MEDIDA_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="PRODUCTO_SECTOR_FK">
     <End Role="SECTOR" Type="Self.SECTOR" Multiplicity="1" />
     <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
@@ -286,6 +308,7 @@
     <EntitySet Name="TEMPORALIDAD" EntityType="Self.TEMPORALIDAD" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TERRITORIO" EntityType="Self.TERRITORIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TIPO_GRAFICO" EntityType="Self.TIPO_GRAFICO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UNIDAD_MEDIDA" EntityType="Self.UNIDAD_MEDIDA" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="CATEGORIA_PRODUCTO_FK" Association="Self.CATEGORIA_PRODUCTO_FK">
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
       <End Role="CATEGORIA" EntitySet="CATEGORIA" />
@@ -320,6 +343,10 @@
     </AssociationSet>
     <AssociationSet Name="GRAFICO_TIPO_GRAFICO_FK" Association="Self.GRAFICO_TIPO_GRAFICO_FK">
       <End Role="TIPO_GRAFICO" EntitySet="TIPO_GRAFICO" />
+      <End Role="GRAFICO" EntitySet="GRAFICO" />
+    </AssociationSet>
+    <AssociationSet Name="GRAFICO_UNIDAD_MEDIDA_FK" Association="Self.GRAFICO_UNIDAD_MEDIDA_FK">
+      <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
       <End Role="GRAFICO" EntitySet="GRAFICO" />
     </AssociationSet>
     <AssociationSet Name="PRODUCTO_SECTOR_FK" Association="Self.PRODUCTO_SECTOR_FK">
