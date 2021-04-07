@@ -26,6 +26,62 @@
 
         </div>
     *@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CATEGORIA_id, "CATEGORIA_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CATEGORIA_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CATEGORIA_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PARAMETRO_id, "PARAMETRO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PARAMETRO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PARAMETRO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DETALLE_id, "DETALLE_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("DETALLE_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DETALLE_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TERRITORIO_id, "TERRITORIO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TERRITORIO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TERRITORIO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TEMPORALIDAD_id, "TEMPORALIDAD_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TEMPORALIDAD_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TEMPORALIDAD_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TIPO_GRAFICO_id, "TIPO_GRAFICO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TIPO_GRAFICO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TIPO_GRAFICO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FUENTE_id, "FUENTE_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("FUENTE_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FUENTE_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
     <div class="form-group">
         @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -146,61 +202,7 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.CATEGORIA_id, "CATEGORIA_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("CATEGORIA_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CATEGORIA_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.PARAMETRO_id, "PARAMETRO_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("PARAMETRO_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PARAMETRO_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DETALLE_id, "DETALLE_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("DETALLE_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.DETALLE_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TERRITORIO_id, "TERRITORIO_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TERRITORIO_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TERRITORIO_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TEMPORALIDAD_id, "TEMPORALIDAD_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TEMPORALIDAD_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TEMPORALIDAD_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TIPO_GRAFICO_id, "TIPO_GRAFICO_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TIPO_GRAFICO_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TIPO_GRAFICO_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.FUENTE_id, "FUENTE_id", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("FUENTE_id", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.FUENTE_id, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.unidad_medida, htmlAttributes: new { @class = "control-label col-md-2" })
