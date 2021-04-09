@@ -14,8 +14,22 @@ namespace Login.Controllers
     {
         private graficosEntities db = new graficosEntities();
 
-        // GET: GRAFICOes
-        public ActionResult Index()
+
+        public JsonResult GetNombre()
+        {
+            var listNOMBRES = db.INDUSTRIA.Select(x => new SelectListItem
+            {
+                Text = x.nombre,
+                Value = x.id.ToString()
+            }).ToList();
+            
+
+            return Json(listNOMBRES, JsonRequestBehavior.AllowGet);
+        }
+
+
+            // GET: GRAFICOes
+            public ActionResult Index()
         {
             var gRAFICO = db.GRAFICO.Include(g => g.CATEGORIA).Include(g => g.DETALLE).Include(g => g.FUENTE).Include(g => g.PARAMETRO).Include(g => g.RESPONSABLE1).Include(g => g.TEMPORALIDAD).Include(g => g.TERRITORIO).Include(g => g.TIPO_GRAFICO).Include(g => g.UNIDAD_MEDIDA1);
             return View(gRAFICO.ToList());
