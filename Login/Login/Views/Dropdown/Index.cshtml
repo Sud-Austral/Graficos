@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+<h2>Cascading Dropdownlist</h2>
+<table>
+    <tr>
+        <td>
+            <label>State</label>
+        </td>
+        <td>
+            @Html.DropDownListFor(x => x.StateNames, Model.StateNames, "--Select--", new { @id = "ddlState" });
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>District</label>
+        </td>
+        <td id="District">
+            @Html.DropDownListFor(x => x.DistrictNames, new List<SelectListItem>(), "--Select--", new { @id = "ddlDistrict" });
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ddlState').change(function () {
+            $.ajax({
+                type: "post",
+                url: "/DropDownList/GetDistrict",
+                data: { stateId: $('#ddlState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district = "<select id='ddlDistrict'>";
+                    district = district + '<option value="">--Select--</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    district = district + '</select>';
+                    $('#District').html(district);
+                }
+            });
+        });
+    });
+</script>

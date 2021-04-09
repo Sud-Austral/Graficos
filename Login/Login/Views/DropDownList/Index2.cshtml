@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index2</h2>
+<div>
+    <select class="form-control" id="id" name="id">
+        <option value="100101">Berries</option>
+        <option value="100102">Cítricos</option>
+        <option value="100103">Frutos de hueso (carozo)</option>
+        <option value="100104">Frutos de pepita</option>
+    </select>
+
+</div>
+<script type="text/javascript">
+    window.onload = (function carganombre() {
+    $("#id").empty();
+        $.getJSON('/DropDownList/GetIndustrias', function (data) {
+            $.each(data, function () {
+                $('#Nombre').append('<option value=' + this.id + '>' + this.nombre + '</option>');
+            });
+        });
+    });
+</script>
