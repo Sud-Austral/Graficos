@@ -3,115 +3,135 @@
 @{
     ViewBag.Title = "Index";
 }
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    // Write on keyup event of keyword input element
+    $(document).ready(function () {
+        $("#search").keyup(function () {
+            _this = this;
+            // Show only matching TR, hide rest of them
+            $.each($("#mytable tbody tr"), function () {
+                if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                    $(this).hide();
+                else
+                    $(this).show();
+            });
+        });
+    });
+</script>
 
-    <h2>Index</h2>
+<h2>Index</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="form-group">
+    <input type="text" class="form-control pull-right" style="width:20%; " id="search" placeholder="Buscar">
+</div>
+
+<table class="table" id="mytable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        @*
+            <th>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </th>
+        *@
+        <th>
+            @Html.DisplayNameFor(model => model.titulo)
+        </th>
+        <th>
+            Ruta
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DETALLE.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FUENTE.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PARAMETRO.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RESPONSABLE1.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TEMPORALIDAD.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TERRITORIO.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_GRAFICO.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UNIDAD_MEDIDA1.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombre)
-            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
             @*
-                <th>
-                    @Html.DisplayNameFor(model => model.descripcion)
-                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
             *@
-            <th>
-                @Html.DisplayNameFor(model => model.titulo)
-            </th>
-            <th>
-                Ruta
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.url)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DETALLE.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FUENTE.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PARAMETRO.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RESPONSABLE1.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TEMPORALIDAD.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TERRITORIO.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TIPO_GRAFICO.nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UNIDAD_MEDIDA1.nombre)
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.titulo)
+            </td>
+            <td>
+                @item.CATEGORIA.nombre/@item.CATEGORIA.PRODUCTO.nombre/@item.CATEGORIA.PRODUCTO.SECTOR.nombre/@item.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA.nombre
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DETALLE.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FUENTE.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PARAMETRO.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RESPONSABLE1.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TEMPORALIDAD.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TERRITORIO.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPO_GRAFICO.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UNIDAD_MEDIDA1.nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nombre)
-                </td>
-                @*
-                    <td>
-                        @Html.DisplayFor(modelItem => item.descripcion)
-                    </td>
-                *@
-                <td>
-                    @Html.DisplayFor(modelItem => item.titulo)
-                </td>
-                <td>
-                    @item.CATEGORIA.nombre/@item.CATEGORIA.PRODUCTO.nombre/@item.CATEGORIA.PRODUCTO.SECTOR.nombre/@item.CATEGORIA.PRODUCTO.SECTOR.INDUSTRIA.nombre
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.url)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DETALLE.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FUENTE.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PARAMETRO.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RESPONSABLE1.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TEMPORALIDAD.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TERRITORIO.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TIPO_GRAFICO.nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UNIDAD_MEDIDA1.nombre)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>
