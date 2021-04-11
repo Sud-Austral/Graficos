@@ -10,7 +10,7 @@ namespace MvcDemoApplication.Controllers
 {
     public class DropDownListController : Controller
     {
-        /*
+        
         //  
         // GET: /DropDownList/  
         SchoolEntities1 schoolEntity = new SchoolEntities1();
@@ -43,7 +43,7 @@ namespace MvcDemoApplication.Controllers
                 });
             }
             return Json(districtNames, JsonRequestBehavior.AllowGet);
-        }*/
+        }
 
         private graficosEntities db = new graficosEntities();
         public ActionResult Index2()
