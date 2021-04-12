@@ -17,7 +17,7 @@ namespace Login.Controllers
         // GET: GRAFICOes
         public ActionResult Index()
         {
-            var gRAFICO = db.GRAFICO.Include(g => g.CATEGORIA).Include(g => g.DETALLE).Include(g => g.FUENTE).Include(g => g.PARAMETRO).Include(g => g.RESPONSABLE1).Include(g => g.TEMPORALIDAD).Include(g => g.TERRITORIO).Include(g => g.TIPO_GRAFICO);
+            var gRAFICO = db.GRAFICO.Include(g => g.INDUSTRIA).Include(g => g.SECTOR).Include(g => g.PRODUCTO).Include(g => g.CATEGORIA).Include(g => g.DETALLE).Include(g => g.FUENTE).Include(g => g.PARAMETRO).Include(g => g.RESPONSABLE1).Include(g => g.TEMPORALIDAD).Include(g => g.TERRITORIO).Include(g => g.TIPO_GRAFICO);
             return View(gRAFICO.ToList());
         }
 
@@ -39,6 +39,9 @@ namespace Login.Controllers
         // GET: GRAFICOes/Create
         public ActionResult Create()
         {
+            ViewBag.INDUSTRIA_id = new SelectList(db.INDUSTRIA, "id", "nombre");
+            ViewBag.SECTOR_id = new SelectList(db.SECTOR, "id", "nombre");
+            ViewBag.PRODUCTO_id = new SelectList(db.PRODUCTO, "id", "nombre");
             ViewBag.CATEGORIA_id = new SelectList(db.CATEGORIA, "id", "nombre");
             ViewBag.DETALLE_id = new SelectList(db.DETALLE, "id", "nombre");
             ViewBag.FUENTE_id = new SelectList(db.FUENTE, "id", "nombre");
@@ -49,6 +52,19 @@ namespace Login.Controllers
             ViewBag.TIPO_GRAFICO_id = new SelectList(db.TIPO_GRAFICO, "id", "nombre");
             return View();
         }
+
+        public JsonResult Industria(int INDUSTRIA_id)
+        {
+            lst = { from d in db.GRAFICO
+                    where d.INDUSTRIA_id == INDUSTRIA_id
+                    select new SECTOR
+                    {
+                        INDUSTRIA_id = d.INDUSTRIA_id,
+                        SECTOR_id = d.SECTOR_id
+                    }
+                   }.ToList();
+        }
+        
 
         // POST: GRAFICOes/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
@@ -65,6 +81,9 @@ namespace Login.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.INDUSTRIA_id = new SelectList(db.INDUSTRIA, "id", "nombre", gRAFICO.INDUSTRIA_id);
+            ViewBag.SECTOR_id = new SelectList(db.SECTOR, "id", "nombre", gRAFICO.SECTOR_id);
+            ViewBag.PRODUCTO_id = new SelectList(db.PRODUCTO, "id", "nombre", gRAFICO.PRODUCTO_id);
             ViewBag.CATEGORIA_id = new SelectList(db.CATEGORIA, "id", "nombre", gRAFICO.CATEGORIA_id);
             ViewBag.DETALLE_id = new SelectList(db.DETALLE, "id", "nombre", gRAFICO.DETALLE_id);
             ViewBag.FUENTE_id = new SelectList(db.FUENTE, "id", "nombre", gRAFICO.FUENTE_id);
@@ -88,6 +107,9 @@ namespace Login.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.INDUSTRIA_id = new SelectList(db.INDUSTRIA, "id", "nombre", gRAFICO.INDUSTRIA_id);
+            ViewBag.SECTOR_id = new SelectList(db.SECTOR, "id", "nombre", gRAFICO.SECTOR_id);
+            ViewBag.PRODUCTO_id = new SelectList(db.PRODUCTO, "id", "nombre", gRAFICO.PRODUCTO_id);
             ViewBag.CATEGORIA_id = new SelectList(db.CATEGORIA, "id", "nombre", gRAFICO.CATEGORIA_id);
             ViewBag.DETALLE_id = new SelectList(db.DETALLE, "id", "nombre", gRAFICO.DETALLE_id);
             ViewBag.FUENTE_id = new SelectList(db.FUENTE, "id", "nombre", gRAFICO.FUENTE_id);
@@ -112,6 +134,9 @@ namespace Login.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.INDUSTRIA_id = new SelectList(db.INDUSTRIA, "id", "nombre", gRAFICO.INDUSTRIA_id);
+            ViewBag.SECTOR_id = new SelectList(db.SECTOR, "id", "nombre", gRAFICO.SECTOR_id);
+            ViewBag.PRODUCTO_id = new SelectList(db.PRODUCTO, "id", "nombre", gRAFICO.PRODUCTO_id);
             ViewBag.CATEGORIA_id = new SelectList(db.CATEGORIA, "id", "nombre", gRAFICO.CATEGORIA_id);
             ViewBag.DETALLE_id = new SelectList(db.DETALLE, "id", "nombre", gRAFICO.DETALLE_id);
             ViewBag.FUENTE_id = new SelectList(db.FUENTE, "id", "nombre", gRAFICO.FUENTE_id);

@@ -55,5 +55,11 @@ namespace Login.Models
         public virtual TEMPORALIDAD TEMPORALIDAD { get; set; }
         public virtual TERRITORIO TERRITORIO { get; set; }
         public virtual TIPO_GRAFICO TIPO_GRAFICO { get; set; }
+        public object INDUSTRIA { get; internal set; }
+        public object SECTOR { get; internal set; }
+        public object PRODUCTO { get; internal set; }
+        public object INDUSTRIA_id { get; internal set; }
+        public object SECTOR_id { get; internal set; }
+        public object PRODUCTO_id { get; internal set; }
     }
 }
