@@ -27,9 +27,30 @@ namespace Login.Controllers
             return Json(listNOMBRES, JsonRequestBehavior.AllowGet);
         }
 
+        /*
+        public string Configurar()
+        {
+            foreach (var item in db.GRAFICO)
+            {
+                try
+                {
+                    item.auxiliar_1 = item.url.Replace(".csv", ".png");
+                    db.Entry(item).State = EntityState.Modified;
 
-            // GET: GRAFICOes
-            public ActionResult Index()
+                }
+                catch (Exception)
+                {
+                }
+                
+                
+            }
+            db.SaveChanges();
+            return "TodoBien";
+        }
+        */
+
+        // GET: GRAFICOes
+        public ActionResult Index()
         {
             var gRAFICO = db.GRAFICO.Include(g => g.CATEGORIA).Include(g => g.DETALLE).Include(g => g.FUENTE).Include(g => g.PARAMETRO).Include(g => g.RESPONSABLE1).Include(g => g.TEMPORALIDAD).Include(g => g.TERRITORIO).Include(g => g.TIPO_GRAFICO).Include(g => g.UNIDAD_MEDIDA1);
             return View(gRAFICO.ToList());
@@ -75,6 +96,8 @@ namespace Login.Controllers
             if (ModelState.IsValid)
             {
                 gRAFICO.id = db.GRAFICO.Max(x => x.id) + 1;
+                gRAFICO.url = gRAFICO.url.ToLower();
+                gRAFICO.auxiliar_1 = gRAFICO.url.Replace(".csv", ".png");
                 db.GRAFICO.Add(gRAFICO);
                 db.SaveChanges();
                 return RedirectToAction("Index");

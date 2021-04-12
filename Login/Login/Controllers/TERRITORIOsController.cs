@@ -50,7 +50,7 @@ namespace Login.Controllers
         {
             if (ModelState.IsValid)
             {
-                tERRITORIO.id = db.TEMPORALIDAD.Max(x => x.id) + 1;
+                tERRITORIO.id = db.TERRITORIO.Max(x => x.id) + 1;
                 db.TERRITORIO.Add(tERRITORIO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
