@@ -31,7 +31,7 @@ namespace Login.Controllers
             // GET: GRAFICOes
             public ActionResult Index()
         {
-            var gRAFICO = db.GRAFICO.Include(g => g.CATEGORIA).Include(g => g.DETALLE).Include(g => g.FUENTE).Include(g => g.PARAMETRO).Include(g => g.RESPONSABLE1).Include(g => g.TEMPORALIDAD).Include(g => g.TERRITORIO).Include(g => g.TIPO_GRAFICO).Include(g => g.UNIDAD_MEDIDA1);
+            var gRAFICO = db.GRAFICO.Include(g => g.INDUSTRIA).Include(g => g.SECTOR).Include(g => g.PRODUCTO).Include(g => g.CATEGORIA).Include(g => g.DETALLE).Include(g => g.FUENTE).Include(g => g.PARAMETRO).Include(g => g.RESPONSABLE1).Include(g => g.TEMPORALIDAD).Include(g => g.TERRITORIO).Include(g => g.TIPO_GRAFICO).Include(g => g.UNIDAD_MEDIDA1);
             return View(gRAFICO.ToList());
         }
 
@@ -53,6 +53,9 @@ namespace Login.Controllers
         // GET: GRAFICOes/Create
         public ActionResult Create()
         {
+            ViewBag.INDUSTRIA_id = new SelectList(db.INDUSTRIA, "id", "nombre");
+            ViewBag.SECTOR_id = new SelectList(db.SECTOR, "id", "nombre");
+            ViewBag.PRODUCTO_id = new SelectList(db.PRODUCTO, "id", "nombre");
             ViewBag.CATEGORIA_id = new SelectList(db.CATEGORIA, "id", "nombre");
             ViewBag.DETALLE_id = new SelectList(db.DETALLE, "id", "nombre");
             ViewBag.FUENTE_id = new SelectList(db.FUENTE, "id", "nombre");
@@ -70,7 +73,7 @@ namespace Login.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nombre,descripcion,titulo,subtitulo,tags,url,iso_pais,nivel_administrativo,descripcion_larga,fecha_publicacion,idioma,responsable,shopify,auxiliar,rango_edad,CATEGORIA_id,PARAMETRO_id,DETALLE_id,TERRITORIO_id,TEMPORALIDAD_id,TIPO_GRAFICO_id,FUENTE_id,unidad_medida,tamanio_muestra,caracteristica_especial,auxiliar_1,RESPONSABLE_id,UNIDAD_MEDIDA_id")] GRAFICO gRAFICO)
+        public ActionResult Create([Bind(Include = "industria,sector,producto,id,nombre,descripcion,titulo,subtitulo,tags,url,iso_pais,nivel_administrativo,descripcion_larga,fecha_publicacion,idioma,responsable,shopify,auxiliar,rango_edad,CATEGORIA_id,PARAMETRO_id,DETALLE_id,TERRITORIO_id,TEMPORALIDAD_id,TIPO_GRAFICO_id,FUENTE_id,unidad_medida,tamanio_muestra,caracteristica_especial,auxiliar_1,RESPONSABLE_id,UNIDAD_MEDIDA_id")] GRAFICO gRAFICO)
         {
             if (ModelState.IsValid)
             {
@@ -80,6 +83,9 @@ namespace Login.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.INDUSTRIA_id = new SelectList(db.INDUSTRIA, "id", "nombre", gRAFICO.INDUSTRIA_id);
+            ViewBag.SECTOR_id = new SelectList(db.SECTOR, "id", "nombre", gRAFICO.SECTOR_id);
+            ViewBag.PRODUCTO_id = new SelectList(db.PRODUCTO, "id", "nombre", gRAFICO.PRODUCTO_id);
             ViewBag.CATEGORIA_id = new SelectList(db.CATEGORIA, "id", "nombre", gRAFICO.CATEGORIA_id);
             ViewBag.DETALLE_id = new SelectList(db.DETALLE, "id", "nombre", gRAFICO.DETALLE_id);
             ViewBag.FUENTE_id = new SelectList(db.FUENTE, "id", "nombre", gRAFICO.FUENTE_id);
@@ -104,6 +110,9 @@ namespace Login.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.INDUSTRIA_id = new SelectList(db.INDUSTRIA, "id", "nombre", gRAFICO.INDUSTRIA_id);
+            ViewBag.SECTOR_id = new SelectList(db.SECTOR, "id", "nombre", gRAFICO.SECTOR_id);
+            ViewBag.PRODUCTO_id = new SelectList(db.PRODUCTO, "id", "nombre", gRAFICO.PRODUCTO_id);
             ViewBag.CATEGORIA_id = new SelectList(db.CATEGORIA, "id", "nombre", gRAFICO.CATEGORIA_id);
             ViewBag.DETALLE_id = new SelectList(db.DETALLE, "id", "nombre", gRAFICO.DETALLE_id);
             ViewBag.FUENTE_id = new SelectList(db.FUENTE, "id", "nombre", gRAFICO.FUENTE_id);
@@ -121,7 +130,7 @@ namespace Login.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nombre,descripcion,titulo,subtitulo,tags,url,iso_pais,nivel_administrativo,descripcion_larga,fecha_publicacion,idioma,responsable,shopify,auxiliar,rango_edad,CATEGORIA_id,PARAMETRO_id,DETALLE_id,TERRITORIO_id,TEMPORALIDAD_id,TIPO_GRAFICO_id,FUENTE_id,unidad_medida,tamanio_muestra,caracteristica_especial,auxiliar_1,RESPONSABLE_id,UNIDAD_MEDIDA_id")] GRAFICO gRAFICO)
+        public ActionResult Edit([Bind(Include = "industria,sector,producto,id,nombre,descripcion,titulo,subtitulo,tags,url,iso_pais,nivel_administrativo,descripcion_larga,fecha_publicacion,idioma,responsable,shopify,auxiliar,rango_edad,CATEGORIA_id,PARAMETRO_id,DETALLE_id,TERRITORIO_id,TEMPORALIDAD_id,TIPO_GRAFICO_id,FUENTE_id,unidad_medida,tamanio_muestra,caracteristica_especial,auxiliar_1,RESPONSABLE_id,UNIDAD_MEDIDA_id")] GRAFICO gRAFICO)
         {
             if (ModelState.IsValid)
             {
@@ -129,6 +138,9 @@ namespace Login.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.INDUSTRIA_id = new SelectList(db.INDUSTRIA, "id", "nombre", gRAFICO.INDUSTRIA_id);
+            ViewBag.SECTOR_id = new SelectList(db.SECTOR, "id", "nombre", gRAFICO.SECTOR_id);
+            ViewBag.PRODUCTO_id = new SelectList(db.PRODUCTO, "id", "nombre", gRAFICO.PRODUCTO_id);
             ViewBag.CATEGORIA_id = new SelectList(db.CATEGORIA, "id", "nombre", gRAFICO.CATEGORIA_id);
             ViewBag.DETALLE_id = new SelectList(db.DETALLE, "id", "nombre", gRAFICO.DETALLE_id);
             ViewBag.FUENTE_id = new SelectList(db.FUENTE, "id", "nombre", gRAFICO.FUENTE_id);

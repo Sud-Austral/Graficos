@@ -14,6 +14,8 @@ namespace Login.Models
     
     public partial class GRAFICO
     {
+        internal object SECTOR_id;
+
         public int id { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
@@ -53,5 +55,10 @@ namespace Login.Models
         public virtual TERRITORIO TERRITORIO { get; set; }
         public virtual TIPO_GRAFICO TIPO_GRAFICO { get; set; }
         public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA1 { get; set; }
+        public object INDUSTRIA { get; internal set; }
+        public object SECTOR { get; internal set; }
+        public object PRODUCTO { get; internal set; }
+        public object INDUSTRIA_id { get; internal set; }
+        public object PRODUCTO_id { get; internal set; }
     }
 }

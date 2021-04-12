@@ -28,6 +28,30 @@
     *@
 
     <div class="form-group">
+        @Html.LabelFor(model => model.INDUSTRIA_id, "INDUSTRIA_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("INDUSTRIA_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.INDUSTRIA_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+        <div class="form-group">
+            @Html.LabelFor(model => model.SECTOR_id, "SECTOR_id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SECTOR_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SECTOR_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.PRODUCTO_id, "PRODUCTO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PRODUCTO_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PRODUCTO_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(model => model.CATEGORIA_id, "CATEGORIA_id", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("CATEGORIA_id", null, htmlAttributes: new { @class = "form-control" })
