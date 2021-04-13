@@ -5,12 +5,14 @@
 }
 
 <h2>Create</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
+<script src="~/Scripts/Propio/Buscadores.js"></script>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>GRAFICO</h4>
     <hr />
@@ -28,7 +30,15 @@
     *@
 
     <div class="form-group">
-        @Html.LabelFor(model => model.CATEGORIA_id, "CATEGORIA_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label col-md-2" for="lblbuscarCategoria">Buscar Categoria</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control text-box single-line" id="searchCategoria" placeholder="Buscar">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CATEGORIA_id, "CATEGORIA", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("CATEGORIA_id", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.CATEGORIA_id, "", new { @class = "text-danger" })
@@ -36,7 +46,15 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PARAMETRO_id, "PARAMETRO_id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label col-md-2" for="lblbuscarParametro">Buscar Parametro</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control text-box single-line" id="searchParametro" 
+                   placeholder="Buscar">
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PARAMETRO_id, "PARAMETRO", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("PARAMETRO_id", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.PARAMETRO_id, "", new { @class = "text-danger" })
@@ -280,8 +298,8 @@
         var fuente = $("#fuente_id").find("option:selected").text().toLowerCase();
         var nombre_Compelto = parametro + "_" + categoria + "_" + detalle + "_" + territorio + "_" + temporalidad;
 
-        
-        
+
+
         //function asignarTitulo() {
         var categoria_titulo = $("#CATEGORIA_id").find("option:selected").text();
         var territorio_titulo = territorio.charAt(0).toUpperCase() + territorio.slice(1);
@@ -295,7 +313,7 @@
                 if (temporalidad.substring(0, 3) == "año") {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " durante el " + temporalidad;
 
-                    titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);                   
+                    titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
 
                     titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
 
@@ -304,9 +322,9 @@
                 else {
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
                 }
-                } 
             }
-        
+        }
+
         else if (parametro == "producción") {
             titulo = parametro + " de " + categoria_titulo + "_" + territorio_titulo + "_" + temporalidad;
             if (territorio == "chile") {
@@ -321,10 +339,10 @@
                     titulo = parametro + " de " + categoria_titulo + " en " + territorio_titulo + " entre " + temporalidad;
                 }
 
-                } 
-
             }
-             
+
+        }
+
         //}
         document.getElementById("nombre").value = nombre_Compelto;//.replace(" ","_");
         //alert($("#CATEGORIA_id").find("option:selected").text());

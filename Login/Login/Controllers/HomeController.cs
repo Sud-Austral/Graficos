@@ -33,5 +33,14 @@ namespace Login.Controllers
         {
             return "Hola";
         }
+
+
+        public string Saludo2(int SerialDate = 32874)
+        {
+            //;
+            //if (SerialDate > 59) SerialDate -= 1; //Excel/Lotus 2/29/1900 bug   
+            
+            return new DateTime(1899, 12, 30).AddDays(SerialDate).ToString();
+        }
     }
 }
