@@ -35,21 +35,21 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="nombre" Type="varchar" MaxLength="250" />
-    <Property Name="descripcion" Type="varchar" MaxLength="2500" />
-    <Property Name="titulo" Type="varchar" MaxLength="250" />
-    <Property Name="subtitulo" Type="varchar" MaxLength="250" />
-    <Property Name="tags" Type="varchar" MaxLength="2500" />
-    <Property Name="url" Type="varchar" MaxLength="250" />
-    <Property Name="iso_pais" Type="varchar" MaxLength="250" />
-    <Property Name="nivel_administrativo" Type="varchar" MaxLength="250" />
-    <Property Name="descripcion_larga" Type="varchar" MaxLength="250" />
-    <Property Name="fecha_publicacion" Type="varchar" MaxLength="250" />
-    <Property Name="idioma" Type="varchar" MaxLength="250" />
-    <Property Name="responsable" Type="varchar" MaxLength="250" />
-    <Property Name="shopify" Type="varchar" MaxLength="250" />
-    <Property Name="auxiliar" Type="varchar" MaxLength="250" />
-    <Property Name="rango_edad" Type="varchar" MaxLength="250" />
+    <Property Name="nombre" Type="varchar(max)" />
+    <Property Name="descripcion" Type="varchar(max)" />
+    <Property Name="titulo" Type="varchar(max)" />
+    <Property Name="subtitulo" Type="varchar(max)" />
+    <Property Name="tags" Type="varchar(max)" />
+    <Property Name="url" Type="varchar(max)" />
+    <Property Name="iso_pais" Type="varchar(max)" />
+    <Property Name="nivel_administrativo" Type="varchar(max)" />
+    <Property Name="descripcion_larga" Type="varchar(max)" />
+    <Property Name="fecha_publicacion" Type="varchar(max)" />
+    <Property Name="idioma" Type="varchar(max)" />
+    <Property Name="responsable" Type="varchar(max)" />
+    <Property Name="shopify" Type="varchar(max)" />
+    <Property Name="auxiliar" Type="varchar(max)" />
+    <Property Name="rango_edad" Type="varchar(max)" />
     <Property Name="CATEGORIA_id" Type="int" Nullable="false" />
     <Property Name="PARAMETRO_id" Type="int" Nullable="false" />
     <Property Name="DETALLE_id" Type="int" Nullable="false" />
@@ -57,10 +57,10 @@
     <Property Name="TEMPORALIDAD_id" Type="int" Nullable="false" />
     <Property Name="TIPO_GRAFICO_id" Type="int" Nullable="false" />
     <Property Name="FUENTE_id" Type="int" Nullable="false" />
-    <Property Name="unidad_medida" Type="varchar" MaxLength="250" />
-    <Property Name="tamanio_muestra" Type="varchar" MaxLength="250" />
-    <Property Name="caracteristica_especial" Type="varchar" MaxLength="250" />
-    <Property Name="auxiliar_1" Type="varchar" MaxLength="250" />
+    <Property Name="unidad_medida" Type="varchar(max)" />
+    <Property Name="tamanio_muestra" Type="varchar(max)" />
+    <Property Name="caracteristica_especial" Type="varchar(max)" />
+    <Property Name="auxiliar_1" Type="varchar(max)" />
     <Property Name="RESPONSABLE_id" Type="int" Nullable="false" />
     <Property Name="UNIDAD_MEDIDA_id" Type="int" Nullable="false" />
   </EntityType>

@@ -11,8 +11,7 @@ namespace Login.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class GRAFICO
     {
         public int id { get; set; }
@@ -21,7 +20,6 @@ namespace Login.Models
         public string titulo { get; set; }
         public string subtitulo { get; set; }
         public string tags { get; set; }
-        [Required, Display(Name = "Nombre Archivo")]
         public string url { get; set; }
         public string iso_pais { get; set; }
         public string nivel_administrativo { get; set; }

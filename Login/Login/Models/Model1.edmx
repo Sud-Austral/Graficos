@@ -40,21 +40,21 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="250" />
-          <Property Name="descripcion" Type="varchar" MaxLength="2500" />
-          <Property Name="titulo" Type="varchar" MaxLength="250" />
-          <Property Name="subtitulo" Type="varchar" MaxLength="250" />
-          <Property Name="tags" Type="varchar" MaxLength="2500" />
-          <Property Name="url" Type="varchar" MaxLength="250" />
-          <Property Name="iso_pais" Type="varchar" MaxLength="250" />
-          <Property Name="nivel_administrativo" Type="varchar" MaxLength="250" />
-          <Property Name="descripcion_larga" Type="varchar" MaxLength="250" />
-          <Property Name="fecha_publicacion" Type="varchar" MaxLength="250" />
-          <Property Name="idioma" Type="varchar" MaxLength="250" />
-          <Property Name="responsable" Type="varchar" MaxLength="250" />
-          <Property Name="shopify" Type="varchar" MaxLength="250" />
-          <Property Name="auxiliar" Type="varchar" MaxLength="250" />
-          <Property Name="rango_edad" Type="varchar" MaxLength="250" />
+          <Property Name="nombre" Type="varchar(max)" />
+          <Property Name="descripcion" Type="varchar(max)" />
+          <Property Name="titulo" Type="varchar(max)" />
+          <Property Name="subtitulo" Type="varchar(max)" />
+          <Property Name="tags" Type="varchar(max)" />
+          <Property Name="url" Type="varchar(max)" />
+          <Property Name="iso_pais" Type="varchar(max)" />
+          <Property Name="nivel_administrativo" Type="varchar(max)" />
+          <Property Name="descripcion_larga" Type="varchar(max)" />
+          <Property Name="fecha_publicacion" Type="varchar(max)" />
+          <Property Name="idioma" Type="varchar(max)" />
+          <Property Name="responsable" Type="varchar(max)" />
+          <Property Name="shopify" Type="varchar(max)" />
+          <Property Name="auxiliar" Type="varchar(max)" />
+          <Property Name="rango_edad" Type="varchar(max)" />
           <Property Name="CATEGORIA_id" Type="int" Nullable="false" />
           <Property Name="PARAMETRO_id" Type="int" Nullable="false" />
           <Property Name="DETALLE_id" Type="int" Nullable="false" />
@@ -62,10 +62,10 @@
           <Property Name="TEMPORALIDAD_id" Type="int" Nullable="false" />
           <Property Name="TIPO_GRAFICO_id" Type="int" Nullable="false" />
           <Property Name="FUENTE_id" Type="int" Nullable="false" />
-          <Property Name="unidad_medida" Type="varchar" MaxLength="250" />
-          <Property Name="tamanio_muestra" Type="varchar" MaxLength="250" />
-          <Property Name="caracteristica_especial" Type="varchar" MaxLength="250" />
-          <Property Name="auxiliar_1" Type="varchar" MaxLength="250" />
+          <Property Name="unidad_medida" Type="varchar(max)" />
+          <Property Name="tamanio_muestra" Type="varchar(max)" />
+          <Property Name="caracteristica_especial" Type="varchar(max)" />
+          <Property Name="auxiliar_1" Type="varchar(max)" />
           <Property Name="RESPONSABLE_id" Type="int" Nullable="false" />
           <Property Name="UNIDAD_MEDIDA_id" Type="int" Nullable="false" />
         </EntityType>
@@ -603,21 +603,21 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="descripcion" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
-          <Property Name="titulo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="subtitulo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="tags" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
-          <Property Name="url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="iso_pais" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="nivel_administrativo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="descripcion_larga" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="fecha_publicacion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="idioma" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="responsable" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="shopify" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="auxiliar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="rango_edad" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subtitulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="iso_pais" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nivel_administrativo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion_larga" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_publicacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idioma" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="responsable" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="shopify" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="auxiliar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="rango_edad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CATEGORIA_id" Type="Int32" Nullable="false" />
           <Property Name="PARAMETRO_id" Type="Int32" Nullable="false" />
           <Property Name="DETALLE_id" Type="Int32" Nullable="false" />
@@ -625,10 +625,10 @@
           <Property Name="TEMPORALIDAD_id" Type="Int32" Nullable="false" />
           <Property Name="TIPO_GRAFICO_id" Type="Int32" Nullable="false" />
           <Property Name="FUENTE_id" Type="Int32" Nullable="false" />
-          <Property Name="unidad_medida" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="tamanio_muestra" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="caracteristica_especial" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="auxiliar_1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="unidad_medida" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tamanio_muestra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="caracteristica_especial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="auxiliar_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="RESPONSABLE_id" Type="Int32" Nullable="false" />
           <Property Name="UNIDAD_MEDIDA_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CATEGORIA" Relationship="graficosModel.GRAFICO_CATEGORIA_FK" FromRole="GRAFICO" ToRole="CATEGORIA" />
